@@ -3,6 +3,7 @@ filetype off
 syntax on
 filetype plugin indent on
 
+
 fun! MySys()
    return "linux"
 endfun

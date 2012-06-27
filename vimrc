@@ -72,7 +72,6 @@ filetype plugin on
 filetype indent on
 
 
-set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
 " ================ Scrolling ========================
@@ -87,3 +86,16 @@ endfor
 
 " ================ Color ========================
 colorscheme desert
+
+
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+
+
+imap ( ()<left>
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
+

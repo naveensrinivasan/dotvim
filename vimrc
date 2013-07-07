@@ -111,6 +111,9 @@ let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
 
 "================= Key bindings =============
+nmap <c-s> <esc>w
 map - ddp " move lines downward
 map _ ddkP " move lines upward
-
+vmap \ U "Upper case in visual selection
+imap <c-u> <esc>veUi " Uppercase a word in insert mode.
+nmap <c-u> veU " Uppercase a word in normal word.

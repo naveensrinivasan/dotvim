@@ -1,3 +1,12 @@
+filetype off
+call pathogen#runtime_append_all_bundles()
+"================ Functions ======================
+function Maximize_Window()
+  silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
+endfunction
+"=================================================
+filetype plugin indent on
+syntax on
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -13,6 +22,8 @@ endif
 if has("gui_running")
   if has("win32")
     au GUIEnter * simalt ~x 
+  else
+    au GUIEnter * call Maximize_Window()
   endif
 endif
 
@@ -93,9 +104,6 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 
 
-imap ( ()<left>
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
-
+"=============== Clojure ====================
+let g:vimclojure#HighlightBuiltins = 1
+let g:vimclojure#ParenRainbow = 1

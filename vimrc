@@ -115,3 +115,11 @@ map _ ddkP " move lines upward
 vmap \ U "Upper case in visual selection
 imap <c-u> <esc>veUi " Uppercase a word in insert mode.
 nmap <c-u> veU " Uppercase a word in normal word.
+
+inoremap <Up> <NOP> " replace up arrow
+inoremap <Down> <NOP> " replace up Down
+inoremap <Left> <NOP> " replace up Left
+inoremap <Right> <NOP> " replace up Right
+inoremap <esc> <nop> "replace escape key
+
+

@@ -37,6 +37,11 @@ call pathogen#runtime_append_all_bundles()
 filetype off
 syntax on
 filetype plugin indent on
+" ================ Plugins ====================
+"
+"
+" ================ airline ====================
+set laststatus=2
 
 " ================ General Config ====================
 
@@ -65,12 +70,9 @@ set viminfo='100,f1  "Save up to 100 marks, enable capital marks
 set smartcase
 
 " ================ Turn Off Swap Files ==============
-
 set noswapfile
 set nobackup
 set nowb
-
-
 " ================ Indentation ======================
 
 set autoindent
@@ -99,13 +101,9 @@ endfor
 
 " ================ Color ========================
 colorscheme desert
-
-
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
-
-
 "=============== Clojure ====================
 let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1

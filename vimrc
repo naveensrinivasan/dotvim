@@ -1,6 +1,8 @@
+" ============== Pathogen settings ==========================
 filetype off
 call pathogen#runtime_append_all_bundles()
-"================ Functions ======================
+
+"================ Functions ===================================
 function Maximize_Window()
   silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
 endfunction
@@ -107,3 +109,8 @@ set guioptions-=r  "remove right-hand scroll bar
 "=============== Clojure ====================
 let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
+
+"================= Key bindings =============
+map - ddp " move lines downward
+map _ ddkP " move lines upward
+

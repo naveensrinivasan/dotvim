@@ -122,15 +122,15 @@ map - ddp
 map _ ddkP 
 "Upper case in visual selection
 vmap \ U 
-" Uppercase a word in insert mode.
-imap <c-u> <esc>veUi 
 " Uppercase a word in normal word.
-nmap <c-u> veU 
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 noremap <BS> <NOP>
+noremap <PageUp> <NOP>
+noremap <PageDown> <NOP>
+
 inoremap <Up> <NOP>
 inoremap <Down> <NOP>
 inoremap <Left> <NOP>
@@ -139,3 +139,5 @@ inoremap <Esc> <NOP>
 inoremap jk <esc>
 inoremap jj <esc>
 inoremap <BS> <NOP>
+inoremap <PageUp> <NOP>
+inoremap <PageDown> <NOP>

@@ -53,6 +53,7 @@ set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
+set clipboard=unnamed           "like the OS clipboard as default
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -110,16 +111,24 @@ let g:vimclojure#ParenRainbow = 1
 
 "================= Key bindings =============
 nmap <c-s> <esc>w
-map - ddp " move lines downward
-map _ ddkP " move lines upward
-vmap \ U "Upper case in visual selection
-imap <c-u> <esc>veUi " Uppercase a word in insert mode.
-nmap <c-u> veU " Uppercase a word in normal word.
-
-inoremap <Up> <NOP> " replace up arrow
-inoremap <Down> <NOP> " replace up Down
-inoremap <Left> <NOP> " replace up Left
-inoremap <Right> <NOP> " replace up Right
-inoremap <esc> <nop> "replace escape key
-
+"move lines downward
+map - ddp 
+"move lines upward
+map _ ddkP 
+"Upper case in visual selection
+vmap \ U 
+" Uppercase a word in insert mode.
+imap <c-u> <esc>veUi 
+" Uppercase a word in normal word.
+nmap <c-u> veU 
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+inoremap <Up> <NOP>
+inoremap <Down> <NOP>
+inoremap <Left> <NOP>
+inoremap <Right> <NOP>
+inoremap <Esc> <NOP>
+inoremap jk <esc>
 

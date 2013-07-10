@@ -115,14 +115,7 @@ let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
 
 "================= Key bindings =============
-nmap <c-s> <esc>w
-"move lines downward
-map - ddp 
-"move lines upward
-map _ ddkP 
-"Upper case in visual selection
-vmap \ U 
-" Uppercase a word in normal word.
+" Arrow keys movement
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
@@ -141,3 +134,13 @@ inoremap jj <esc>
 inoremap <BS> <NOP>
 inoremap <PageUp> <NOP>
 inoremap <PageDown> <NOP>
+"===========================
+"move lines downward
+map - ddp 
+"move lines upward
+map _ ddkP 
+"Upper case in visual selection
+vmap \ U 
+
+"========== open's vimrc ===============
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>

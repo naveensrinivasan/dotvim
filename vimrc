@@ -63,11 +63,6 @@ set hidden
 "turn on syntax highlighting
 syntax on
 
-"reload vimrc
-augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-augroup END
 " ================ Search Settings  =================
 
 set incsearch        "Find the next match as we type the search

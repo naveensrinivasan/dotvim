@@ -134,3 +134,6 @@ nnoremap <leader>sv :so $MYVIMRC<cr>
 :iabbrev waht what
 :iabbrev tehn then 
 :iabbrev ns naveensrinivasan@yahoo.com 
+"===============Auto commands==================
+:autocmd BufWritePre,BufRead *.html :normal gg=G
+:autocmd BufNewFile,BufRead *.html setlocal nowrap

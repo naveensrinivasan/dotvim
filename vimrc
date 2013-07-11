@@ -1,45 +1,24 @@
-" ============== Pathogen settings ==========================
+" =============== Pathogen Initialization ===============
+" This loads all the plugins in ~/.vim/bundle
+" Use tpope's pathogen plugin to manage all other plugins
 filetype off
 call pathogen#runtime_append_all_bundles()
-
-"================ Functions ===================================
-function Maximize_Window()
-  silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
-endfunction
-"=================================================
 filetype plugin indent on
 syntax on
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
-
-" TODO: this may not be in the correct place. It is intended to allow overriding <Leader>.
-" source ~/.vimrc.before if it exists.
-if filereadable(expand("~/.vimrc.before"))
-  source ~/.vimrc.before
-endif
-
-
+"=============== Windoww setttings===============================
 " Maximize the window
 if has("gui_running")
   if has("win32")
     au GUIEnter * simalt ~x 
   else
-    au GUIEnter * call Maximize_Window()
+    au GUIEnter * silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz  
   endif
 endif
 
-" =============== Pathogen Initialization ===============
-" This loads all the plugins in ~/.vim/bundle
-" Use tpope's pathogen plugin to manage all other plugins
-
-call pathogen#runtime_append_all_bundles()
-filetype off
-syntax on
-filetype plugin indent on
 " ================ Plugins ====================
-"
-"
 " ================ airline ====================
 set laststatus=2
 
@@ -69,7 +48,10 @@ set incsearch        "Find the next match as we type the search
 set hlsearch         "Highlight searches by default
 set viminfo='100,f1  "Save up to 100 marks, enable capital marks
 set ignorecase
-
+set smartcase
+set gdefault
+set showmatch
+nnoremap <leader><space> :noh<cr>
 " ================ Turn Off Swap Files ==============
 set noswapfile
 set nobackup
@@ -91,17 +73,12 @@ filetype indent on
 set linebreak    "Wrap lines at convenient points
 
 " ================ Scrolling ========================
-
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
-
-for f in split(glob('~/.vim/plugin/settings/*.vim'), '\n')
-  exe 'source' f
-endfor
-
 " ================ Color ========================
-colorscheme desert
+set background=dark
+colorscheme solarized
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
@@ -110,14 +87,17 @@ let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
 
 "================= Key bindings =============
+let mapleader=","
 " Arrow keys movement
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-noremap <BS> <NOP>
-noremap <PageUp> <NOP>
-noremap <PageDown> <NOP>
+nnoremap <Up> <NOP>
+nnoremap <Down> <NOP>
+nnoremap <Left> <NOP>
+nnoremap <Right> <NOP>
+nnoremap <BS> <NOP>
+nnoremap <PageUp> <NOP>
+nnoremap <PageDown> <NOP>
+nnoremap 0 <NOP>
+nnoremap $ <NOP>
 
 inoremap <Up> <NOP>
 inoremap <Down> <NOP>
@@ -130,12 +110,27 @@ inoremap <BS> <NOP>
 inoremap <PageUp> <NOP>
 inoremap <PageDown> <NOP>
 "===========================
+"  Movement
+"Start of the line 
+nnoremap H 0
+"End of the line 
+nnoremap L $
 "move lines downward
-map - ddp 
+nmap - ddp 
 "move lines upward
-map _ ddkP 
+nmap _ ddkP 
 "Upper case in visual selection
-vmap \ U 
-
+vnoremap <leader> U 
+"Quote the word 
+nnoremap <leader>" ea"<esc>bi"<esc>
+"Single Quote the word 
+nnoremap <leader>' ea'<esc>bi'<esc>
 "========== open's vimrc ===============
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+"============= reload vimrc=============
+nnoremap <leader>sv :so $MYVIMRC<cr>
+"=========== iabbreev=================='
+:iabbrev adn and
+:iabbrev waht what
+:iabbrev tehn then 
+:iabbrev ns naveensrinivasan@yahoo.com 

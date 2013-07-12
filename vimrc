@@ -1,6 +1,7 @@
 " =============== Pathogen Initialization ===============
 " This loads all the plugins in ~/.vim/bundle
 " Use tpope's pathogen plugin to manage all other plugins
+call pathogen#infect()
 filetype off
 call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
@@ -78,7 +79,7 @@ set sidescrolloff=15
 set sidescroll=1
 " ================ Color ========================
 set background=dark
-colorscheme solarized
+colorscheme desert
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
@@ -137,3 +138,5 @@ nnoremap <leader>sv :so $MYVIMRC<cr>
 "===============Auto commands==================
 :autocmd BufWritePre,BufRead *.html :normal gg=G
 :autocmd BufNewFile,BufRead *.html setlocal nowrap
+" default indenter for xml files
+autocmd FileType xml setlocal equalprg=xmllint\ --format\ -

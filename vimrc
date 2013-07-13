@@ -123,9 +123,9 @@ nmap _ ddkP
 "Upper case in visual selection
 vnoremap <leader> U 
 "Quote the word 
-nnoremap <leader>" ea"<esc>bi"<esc>
+nnoremap <leader>" Wa"<esc>bi"<esc>
 "Single Quote the word 
-nnoremap <leader>' ea'<esc>bi'<esc>
+nnoremap <leader>' Wa'<esc>bi'<esc>
 "========== open's vimrc ===============
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 "============= reload vimrc=============

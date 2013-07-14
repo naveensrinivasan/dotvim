@@ -122,9 +122,9 @@ nnoremap H 0
 "End of the line 
 nnoremap L $
 "move lines downward
-nnoremap - ddp 
+nmap - ddp 
 "move lines upward
-nnoremap _ ddkP 
+nmap _ ddkP 
 "Upper case in visual selection
 vnoremap <leader> U 
 "Quote the word 
@@ -132,8 +132,7 @@ nnoremap <leader>" Wa"<esc>bi"<esc>
 "Single Quote the word 
 nnoremap <leader>' Wa'<esc>bi'<esc>
 "========= Save ======
-:noremap <c-s> :w<CR>
-:inoremap <c-s> <Esc>:w<CR>
+nnoremap ^S <esc>:w 
 "========= quit ======================
 "cnoremap Q q
 "========== open's vimrc ===============

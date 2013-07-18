@@ -1,4 +1,5 @@
-" =============== Pathogen Initialization ===============
+" vim: foldmethod=marker
+" =============== Pathogen Initialization ==============={{{1
 " This loads all the plugins in ~/.vim/bundle
 " Use tpope's pathogen plugin to manage all other plugins
 call pathogen#infect()
@@ -9,7 +10,7 @@ syntax on
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
-"=============== Windoww setttings===============================
+"=============== Window setttings==============================={{{1
 " Maximize the window
 if has("gui_running")
   if has("win32")
@@ -19,11 +20,11 @@ if has("gui_running")
   endif
 endif
 
-" ================ Plugins ====================
+" ================ Plugins ===================={{{1
 " ================ airline ====================
 set laststatus=2
 
-" ================ General Config ====================
+" ================ General Config ===================={{{1
 
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
@@ -43,8 +44,7 @@ set hidden
 "turn on syntax highlighting
 syntax on
 
-" ================ Search Settings  =================
-
+" ================ Search Settings  ================={{{1
 set incsearch        "Find the next match as we type the search
 set hlsearch         "Highlight searches by default
 set viminfo='100,f1  "Save up to 100 marks, enable capital marks
@@ -53,11 +53,12 @@ set smartcase
 set gdefault
 set showmatch
 nnoremap <leader><space> :noh<cr>
+
 " ================ Turn Off Swap Files ==============
 set noswapfile
 set nobackup
 set nowb
-" ================ Indentation ======================
+" ================ Indentation ======================{{{1
 
 set autoindent
 set smartindent
@@ -73,7 +74,7 @@ filetype indent on
 
 set linebreak    "Wrap lines at convenient points
 
-" ================ Scrolling ========================
+" ================ Scrolling ========================{{{1
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
@@ -87,9 +88,9 @@ set guioptions-=r  "remove right-hand scroll bar
 let g:vimclojure#HighlightBuiltins = 1
 let g:vimclojure#ParenRainbow = 1
 
-"================= Key bindings =============
+"================= Key bindings ============={{{1
 let mapleader=","
-" Arrow keys movement
+" Arrow keys movement{{{2
 nnoremap <Up> <NOP>
 nnoremap <Down> <NOP>
 nnoremap <Left> <NOP>
@@ -100,18 +101,13 @@ nnoremap <PageDown> <NOP>
 nnoremap 0 <NOP>
 nnoremap $ <NOP>
 
-"inoremap <Up> <NOP>
-"inoremap <Down> <NOP>
-"inoremap <Left> <NOP>
-"inoremap <Right> <NOP>
-"inoremap <Esc> <NOP>
 inoremap jk <esc>
 inoremap jj <esc>
 inoremap <BS> <NOP>
 inoremap <PageUp> <NOP>
 inoremap <PageDown> <NOP>
 
-
+"==================== custom bindings =============={{{2 
 "Start of the line 
 nnoremap H 0
 "End of the line 
@@ -126,26 +122,25 @@ vnoremap <leader> U
 nnoremap <leader>" Wa"<esc>bi"<esc>
 "Single Quote the word 
 nnoremap <leader>' Wa'<esc>bi'<esc>
-"======= Split movement ================
+"fold
+nnoremap <Space> za
+"======= Split movement ================{{{2
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-"========= Save ======
+"========= Save ======{{{2
 :noremap <c-s> :w<CR>
 :inoremap <c-s> <Esc>:w<CR>
-"========= quit ======================
-"cnoremap Q q
-"========== open's vimrc ===============
+"========== vimrc ==============={{{2
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-"============= reload vimrc=============
 nnoremap <leader>sv :so $MYVIMRC<cr>
-"=========== iabbreev=================='
+"=========== iabbreev=================='{{{1
 :iabbrev adn and
 :iabbrev waht what
 :iabbrev tehn then 
 :iabbrev ns naveensrinivasan@yahoo.com 
-"===============Auto commands==================
+"===============Auto commands=================={{{1
 :autocmd BufWritePre,BufRead *.html :normal gg=G
 :autocmd BufNewFile,BufRead *.html setlocal nowrap
 " defaulttt indenter for xml files

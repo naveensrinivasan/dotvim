@@ -1,4 +1,5 @@
 " vim: foldmethod=marker
+" vim: foldcolumn=2
 " =============== Pathogen Initialization ==============={{{1
 " This loads all the plugins in ~/.vim/bundle
 " Use tpope's pathogen plugin to manage all other plugins

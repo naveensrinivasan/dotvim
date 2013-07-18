@@ -100,11 +100,11 @@ nnoremap <PageDown> <NOP>
 nnoremap 0 <NOP>
 nnoremap $ <NOP>
 
-inoremap <Up> <NOP>
-inoremap <Down> <NOP>
-inoremap <Left> <NOP>
-inoremap <Right> <NOP>
-inoremap <Esc> <NOP>
+"inoremap <Up> <NOP>
+"inoremap <Down> <NOP>
+"inoremap <Left> <NOP>
+"inoremap <Right> <NOP>
+"inoremap <Esc> <NOP>
 inoremap jk <esc>
 inoremap jj <esc>
 inoremap <BS> <NOP>
@@ -126,6 +126,11 @@ vnoremap <leader> U
 nnoremap <leader>" Wa"<esc>bi"<esc>
 "Single Quote the word 
 nnoremap <leader>' Wa'<esc>bi'<esc>
+"======= Split movement ================
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 "========= Save ======
 :noremap <c-s> :w<CR>
 :inoremap <c-s> <Esc>:w<CR>
@@ -145,40 +150,3 @@ nnoremap <leader>sv :so $MYVIMRC<cr>
 :autocmd BufNewFile,BufRead *.html setlocal nowrap
 " defaulttt indenter for xml files
 autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" key mapping for window navigation
-"
-" If you're in tmux it'll keep going to tmux splits if you hit the end of
-" your vim splits.
-"
-" For the tmux side see:
-" https://github.com/aaronjensen/dotfiles/blob/e9c3551b40c43264ac2cd21d577f948192a46aea/tmux.conf#L96-L102
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if exists('$TMUX')
-  function! TmuxOrSplitSwitch(wincmd, tmuxdir)
-    let previous_winnr = winnr()
-    execute "wincmd " . a:wincmd
-    if previous_winnr == winnr()
-" The sleep and & gives time to get back to vim so tmux's focus tracking
-" can kick in and send us our ^[[O
-      execute "silent !sh -c 'sleep 0.01; tmux select-pane -" . a:tmuxdir . "' &"
-      redraw!
-    endif
-  endfunction
-
-  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
-  let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
-  let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
-
-  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
-  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
-  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
-  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
-else
-  map <C-h> <C-w>h
-  map <C-j> <C-w>j
-  map <C-k> <C-w>k
-  map <C-l> <C-w>l
-endif

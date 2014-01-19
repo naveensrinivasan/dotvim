@@ -109,10 +109,6 @@ inoremap <BS> <NOP>
 inoremap <PageUp> <NOP>
 inoremap <PageDown> <NOP>
 
-noremap h <NOP>
-noremap j <NOP>
-noremap k <NOP>
-noremap l <NOP>
 "==================== custom bindings =============={{{2 
 "Start of the line 
 nnoremap H 0

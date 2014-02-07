@@ -97,7 +97,6 @@ nnoremap <Up> <NOP>
 nnoremap <Down> <NOP>
 nnoremap <Left> <NOP>
 nnoremap <Right> <NOP>
-nnoremap <BS> <NOP>
 nnoremap <PageUp> <NOP>
 nnoremap <PageDown> <NOP>
 nnoremap 0 <NOP>

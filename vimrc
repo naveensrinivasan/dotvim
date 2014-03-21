@@ -37,6 +37,7 @@ set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set clipboard=unnamed           "like the OS clipboard as default
 set autochdir                   "Change dir automatically
+set guifont=consolas:h14
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -104,7 +105,6 @@ nnoremap $ <NOP>
 
 inoremap jk <esc>
 inoremap jj <esc>
-inoremap <BS> <NOP>
 inoremap <PageUp> <NOP>
 inoremap <PageDown> <NOP>
 

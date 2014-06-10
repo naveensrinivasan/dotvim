@@ -19,6 +19,12 @@ if has("gui_running")
   else
     au GUIEnter * silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz  
   endif
+if has("gui_macvim")
+    " set macvim specific stuff
+    set guifont=Menlo:h16
+else
+    set guifont=consolas:h18
+endif
 endif
 
 " ================ Plugins ===================={{{1
@@ -37,7 +43,6 @@ set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set clipboard=unnamed           "like the OS clipboard as default
 set autochdir                   "Change dir automatically
-set guifont=consolas:h14
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.

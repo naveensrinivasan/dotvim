@@ -151,3 +151,12 @@ nnoremap <leader>sv :so $MYVIMRC<cr>
 :autocmd BufNewFile,BufRead *.html setlocal nowrap
 " defaulttt indenter for xml files
 autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
+"=============Syntastic======================={{{1
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0

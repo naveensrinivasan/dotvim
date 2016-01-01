@@ -34,6 +34,7 @@ set laststatus=2
 " ================ General Config ===================={{{1
 
 set number                      "Line numbers are good
+set ruler                       "Display the ruler
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
@@ -43,6 +44,7 @@ set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set clipboard=unnamed           "like the OS clipboard as default
 set autochdir                   "Change dir automatically
+set cursorline                  " highlight current line
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.

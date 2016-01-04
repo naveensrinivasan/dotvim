@@ -34,7 +34,6 @@ set laststatus=2
 " ================ General Config ===================={{{1
 
 set number                      "Line numbers are good
-set ruler                       "Display the ruler
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
@@ -44,7 +43,10 @@ set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set clipboard=unnamed           "like the OS clipboard as default
 set autochdir                   "Change dir automatically
-set cursorline                  " highlight current line
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40
+set wildmenu                    "autocomplete filename
+set lazyredraw          " redraw only when we need to.
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -53,6 +55,7 @@ set hidden
 
 "turn on syntax highlighting
 syntax on
+syntax enable   " enable syntax processing
 
 " ================ Search Settings  ================={{{1
 set incsearch        "Find the next match as we type the search
@@ -74,9 +77,9 @@ set autoindent
 set smartindent
 set smarttab
 set shiftwidth=2
-set softtabstop=2
-set tabstop=2
-set expandtab
+set softtabstop=4  " number of visual spaces per TAB
+set tabstop=4      "number of spaces in tab when editing
+set expandtab      "expand tab to spaces
 
 filetype plugin on
 filetype indent on
@@ -90,7 +93,7 @@ set sidescrolloff=15
 set sidescroll=1
 " ================ Color ========================
 set background=dark
-colorscheme desert
+colorscheme badwolf         " awesome colorscheme
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
@@ -140,6 +143,8 @@ nnoremap <C-l> <C-w>l
 "========= Save ======{{{2
 :noremap <c-s> :w<CR>
 :inoremap <c-s> <Esc>:w<CR>
+" save session
+:nnoremap <leader>s :mksession<CR>
 "========== vimrc ==============={{{2
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :so $MYVIMRC<cr>

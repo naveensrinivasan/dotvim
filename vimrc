@@ -147,6 +147,7 @@ nnoremap <C-l> <C-w>l
 :nnoremap <leader>s :mksession<CR>
 "========== vimrc ==============={{{2
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
 nnoremap <leader>sv :so $MYVIMRC<cr>
 "=========== iabbreev=================='{{{1
 :iabbrev adn and
@@ -158,6 +159,9 @@ nnoremap <leader>sv :so $MYVIMRC<cr>
 :autocmd BufNewFile,BufRead *.html setlocal nowrap
 " defaulttt indenter for xml files
 autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
+autocmd FileType fsharp :nnoremap <leader>f %!mono ~/.vim/bundle/fantomas/Fantomas.exe --stdout % <CR>
+
+
 "=============Syntastic======================={{{1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}

@@ -31,3 +31,22 @@ npm install  -g typescript
 brew install mono
 
 brew install scala
+
+brew install curl
+
+brew install wget
+
+#zsh
+curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+
+brew install python
+
+pip install --upgrade pip
+
+pip install awscli
+
+
+#git settings
+git config --global user.name "naveen"
+
+git config --global user.email "nsrinivasan1976@gmail.com"

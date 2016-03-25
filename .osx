@@ -36,6 +36,10 @@ brew install curl
 
 brew install wget
 
+brew install jq
+
+brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
+
 #zsh
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 
@@ -50,3 +54,5 @@ pip install awscli
 git config --global user.name "naveen"
 
 git config --global user.email "nsrinivasan1976@gmail.com"
+
+git config --global credential.helper osxkeychain

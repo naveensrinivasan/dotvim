@@ -84,3 +84,14 @@ source /usr/local/bin/aws_zsh_completer.sh
 # Example aliases
  alias zshconfig="vim ~/.zshrc"
  alias ohmyzsh="vim ~/.oh-my-zsh"
+
+#tmux alias
+#tl: list sessions
+alias tl='tmux ls'
+#tn <name>: create a session named <name>
+alias tn='tmux -CC -2 new -s'
+#ta <name>: attach to a session named <name>
+alias ta='tmux -CC -2 attach -t'
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

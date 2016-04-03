@@ -161,4 +161,7 @@ nnoremap <leader>sv :so $MYVIMRC<cr>
 autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
 autocmd FileType fsharp :nnoremap <leader>f %!mono ~/.vim/bundle/fantomas/Fantomas.exe --stdout % <CR>
 
-
+"Generates line numbers to print
+function GenerateLineNumbers()
+ %s/^/\=printf('%-4d', line('.'))
+endfunction

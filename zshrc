@@ -92,6 +92,15 @@ alias tl='tmux ls'
 alias tn='tmux -CC -2 new -s'
 #ta <name>: attach to a session named <name>
 alias ta='tmux -CC -2 attach -t'
+#rm removes all docker images
+alias drm='docker rm $(docker ps -a -q)'
+#dps
+alias dps='docker ps'
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+eval "$(docker-machine env default)"
+
+
+source /usr/local/lib/dnx/bin/dnvm.sh

@@ -10,6 +10,7 @@ brew install elinks
 brew install exiftool
 brew install findutils
 brew install gawk
+brew install git
 brew install gnu-getopt
 brew install gnu-indent
 brew install gnu-sed
@@ -17,7 +18,9 @@ brew install gnu-tar
 brew install gnupg
 brew install gnutls
 brew install gradle
+brew install haskell-stack
 brew install highlight
+brew install hub
 brew install jq
 brew install kotlin
 brew install libcaca
@@ -26,6 +29,7 @@ brew install macvim
 brew install maven
 brew install media-info
 brew install mtr
+brew install neovim/neovim/neovim
 brew install node
 brew install osquery
 brew install poppler
@@ -41,6 +45,7 @@ brew install tmux
 brew install tomcat
 brew install transmission
 brew install tree
+brew install unrar
 brew install vegeta
 brew install vim
 brew install w3m

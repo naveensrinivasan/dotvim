@@ -16,30 +16,11 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 # install home brew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# update brew
-brew update
-#vim
-brew install vim && brew install macvim
-
-brew link macvim
-#node
-brew install node
 
 #typescript
 npm install  -g typescript
 
-brew install mono
-
-brew install scala
-
-brew install curl
-
-brew install wget
-
-brew install jq
-
-brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt
-
+npm install -g how2
 #zsh
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
 

@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/naveensrinivasan/.oh-my-zsh
+export ZSH=/Users/naveen/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -101,6 +101,3 @@ alias dps='docker ps'
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 eval "$(docker-machine env default)"
-
-
-source /usr/local/lib/dnx/bin/dnvm.sh

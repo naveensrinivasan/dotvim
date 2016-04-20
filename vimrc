@@ -95,7 +95,7 @@ set sidescrolloff=15
 set sidescroll=1
 " ================ Color ========================
 set background=dark
-colorscheme badwolf         " awesome colorscheme
+colors  dracula         " awesome colorscheme
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar

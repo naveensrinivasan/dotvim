@@ -18,7 +18,7 @@ ZSH_THEME="agnoster"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+ export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -35,7 +35,7 @@ ZSH_THEME="agnoster"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -49,7 +49,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx)
+plugins=(git osx docker)
 
 # User configuration
 
@@ -101,3 +101,46 @@ alias dps='docker ps'
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 eval "$(docker-machine env default)"
+
+# ------------------------------------
+# Docker alias and function
+# ------------------------------------
+
+# Get latest container ID
+alias dl="docker ps -l -q"
+
+# Get container process
+
+# Get process included stop container
+alias dpa="docker ps -a"
+
+# Get images
+alias di="docker images"
+
+# Get container IP
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+
+# Run deamonized container, e.g., $dkd base /bin/echo hello
+alias dkd="docker run -d -P"
+
+# Run interactive container, e.g., $dki base /bin/bash
+alias dki="docker run -i -t -P"
+
+# Execute interactive container, e.g., $dex base /bin/bash
+alias dex="docker exec -i -t"
+
+# Stop all containers
+dstop() { docker stop $(docker ps -a -q); }
+
+
+# Stop and Remove all containers
+alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+
+# Remove all images
+dri() { docker rmi $(docker images -q); }
+
+# Dockerfile build, e.g., $dbu tcnksm/test 
+dbu() { docker build -t=$1 .; }
+
+# Show all alias related docker
+dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }

@@ -117,7 +117,6 @@ alias dpa="docker ps -a"
 # Get images
 alias di="docker images"
 
-# Get container IP
 alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
 
 # Run deamonized container, e.g., $dkd base /bin/echo hello
@@ -128,6 +127,9 @@ alias dki="docker run -i -t -P"
 
 # Execute interactive container, e.g., $dex base /bin/bash
 alias dex="docker exec -i -t"
+
+#grep alias 
+alias ga="alias | grep"
 
 # Stop all containers
 dstop() { docker stop $(docker ps -a -q); }
@@ -144,3 +146,9 @@ dbu() { docker build -t=$1 .; }
 
 # Show all alias related docker
 dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
+
+# Get docker machine ip
+docker-ip() {
+  docker-machine ip 2> /dev/null
+}
+

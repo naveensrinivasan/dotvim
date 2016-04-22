@@ -82,8 +82,8 @@ source /usr/local/bin/aws_zsh_completer.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
- alias zshconfig="vim ~/.zshrc"
- alias ohmyzsh="vim ~/.oh-my-zsh"
+alias zshconfig="${EDITOR} ~/.zshrc"
+alias ohmyzsh="${EDITOR} ~/.oh-my-zsh"
 
 #tmux alias
 #tl: list sessions
@@ -100,16 +100,15 @@ alias dps='docker ps'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-eval "$(docker-machine env default)"
 
 # ------------------------------------
 # Docker alias and function
 # ------------------------------------
 
+eval "$(docker-machine env default)"
+
 # Get latest container ID
 alias dl="docker ps -l -q"
-
-# Get container process
 
 # Get process included stop container
 alias dpa="docker ps -a"
@@ -151,4 +150,3 @@ dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/[
 docker-ip() {
   docker-machine ip 2> /dev/null
 }
-

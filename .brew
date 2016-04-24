@@ -51,3 +51,4 @@ brew install vim
 brew install w3m
 brew install wget
 brew install zsh-syntax-highlighting
+brew cask install macdown

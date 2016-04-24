@@ -150,3 +150,7 @@ dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/[
 docker-ip() {
   docker-machine ip 2> /dev/null
 }
+
+#doker linter
+#https://github.com/lukasmartinelli/hadolint
+alias dlint="docker run --rm -i lukasmartinelli/hadolint <"

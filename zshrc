@@ -54,6 +54,12 @@ plugins=(git osx docker)
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+#go path
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export GOPATH=$HOME/Go
+
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -103,7 +109,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # Docker alias and function
 # ------------------------------------
 
-eval "$(docker-machine env default)"
 #rm removes all docker images
 alias drm='docker rm $(docker ps -a -q)'
 #dps
@@ -127,6 +132,9 @@ alias dki="docker run -i -t -P"
 
 # Execute interactive container, e.g., $dex base /bin/bash
 alias dex="docker exec -i -t"
+
+# Docker tag
+alias dtag="docker tag"
 
 #grep alias 
 alias ga="alias | grep"

@@ -53,11 +53,15 @@ plugins=(git osx docker)
 
 # User configuration
 
+export GOPATH=$HOME/Go
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 #go path
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
-export GOPATH=$HOME/Go
+export PATH=$PATH:$GOPATH/bin
+
+
+
 
 
 # export MANPATH="/usr/local/man:$MANPATH"

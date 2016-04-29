@@ -107,7 +107,15 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1  
 let g:go_highlight_operators = 1  
 let g:go_highlight_build_constraints = 1  
+let g:go_fmt_command = "goimports"
 
+
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+au FileType go nmap <Leader>gd <Plug>(go-doc)
 "===============NeoComplete ================
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
@@ -201,6 +209,21 @@ inoremap jj <esc>
 inoremap <PageUp> <NOP>
 inoremap <PageDown> <NOP>
 
+"==================== quick fix =============={{{2 
+
+nnoremap <leader>q :call QuickfixToggle()<cr>
+
+let g:quickfix_is_open = 0
+
+function! QuickfixToggle()
+    if g:quickfix_is_open
+        cclose
+        let g:quickfix_is_open = 0
+    else
+        copen
+        let g:quickfix_is_open = 1
+    endif
+endfunction
 "==================== custom bindings =============={{{2 
 "Start of the line 
 nnoremap H 0
@@ -226,10 +249,14 @@ nnoremap <C-l> <C-w>l
 "========= Save ======{{{2
 :noremap <c-s> :w<CR>
 :inoremap <c-s> <Esc>:w<CR>
+
+" save automatically when text is changed
+set updatetime=200
+au CursorHold * silent! update
 " save session
 :nnoremap <leader>s :mksession<CR>
 "========== vimrc ==============={{{2
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :split $MYVIMRC<cr>
 
 nnoremap <leader>sv :so $MYVIMRC<cr>
 "=========== iabbreev=================='{{{1
@@ -245,6 +272,7 @@ autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
 autocmd FileType fsharp :nnoremap <leader>f %!mono ~/.vim/bundle/fantomas/Fantomas.exe --stdout % <CR>
 
 "Generates line numbers to print
-function GenerateLineNumbers()
+function! GenerateLineNumbers()
  %s/^/\=printf('%-4d', line('.'))
 endfunction
+

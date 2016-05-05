@@ -49,7 +49,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx docker)
+plugins=(git osx docker kubectl)
 
 # User configuration
 
@@ -151,7 +151,7 @@ dstop() { docker stop $(docker ps -a -q); }
 alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 
 # Remove all images
-dri() { docker rmi $(docker images -q); }
+dri() { docker rmi --force $(docker images -q); }
 
 # Dockerfile build, e.g., $dbu tcnksm/test 
 dbu() { docker build -t=$1 .; }
@@ -167,3 +167,15 @@ docker-ip() {
 #doker linter
 #https://github.com/lukasmartinelli/hadolint
 alias dlint="docker run --rm -i lukasmartinelli/hadolint <"
+
+cdf() {
+    target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
+    if [ "$target" != "" ]; then
+        cd "$target"; pwd
+    else
+        echo 'No Finder window found' >&2
+    fi
+}
+
+#sourcing kubectl
+source ~/kube/kubernetes/contrib/completions/zsh/kubectl

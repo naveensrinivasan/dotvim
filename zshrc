@@ -62,8 +62,6 @@ export PATH=$PATH:$GOPATH/bin
 
 
 
-
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -105,6 +103,12 @@ alias ta='tmux -CC -2 attach -t'
 
 #alias hub 
 alias git=hub
+
+
+# Kubernetes
+alias k='kubectl'
+alias kap='kubectl get po --all-namespaces'
+
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -159,6 +163,13 @@ dbu() { docker build -t=$1 .; }
 # Show all alias related docker
 dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
 
+# show all alias realted kubectl
+kalias() { alias | grep 'kubectl' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
+
+# show all alias realted kubectl
+galias() { alias | grep 'git' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
+
+
 # Get docker machine ip
 docker-ip() {
   docker-machine ip 2> /dev/null
@@ -177,5 +188,5 @@ cdf() {
     fi
 }
 
-#sourcing kubectl
-source ~/kube/kubernetes/contrib/completions/zsh/kubectl
+#sourcing kubectl 
+source ~/.vim/zsh/zsh-kube

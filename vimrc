@@ -20,10 +20,9 @@ if has("gui_running")
     au GUIEnter * silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz  
   endif
 if has("gui_macvim")
-    " set macvim specific stuff
-    set guifont=Menlo:h16
+    set guifont=Fira\ Code:h16
 else
-    set guifont=consolas:h18
+    set guifont=Fira\ Code:h16
 endif
 endif
 

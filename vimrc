@@ -43,7 +43,6 @@ set autoread                    "Reload files changed outside vim
 set clipboard=unnamed           "like the OS clipboard as default
 set autochdir                   "Change dir automatically
 set cursorline
-hi CursorLine term=bold cterm=bold guibg=Grey40
 set wildmenu                    "autocomplete filename
 set lazyredraw          " redraw only when we need to.
 

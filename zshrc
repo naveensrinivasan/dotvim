@@ -108,6 +108,10 @@ alias git=hub
 # Kubernetes
 alias k='kubectl'
 alias kap='kubectl get po --all-namespaces'
+alias kp='kubectl get po'
+
+
+kl() {kubectl get pod -l $1  -o name | cut -d'/' -f2 | xargs -I{} kubectl log {}}
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -188,5 +192,68 @@ cdf() {
     fi
 }
 
+
+  # docker-machine stuff
+    if [ $(which docker-machine) ]; then
+      export C_DOCKER_MACHINE="docker-vm"
+
+      dminit() {
+        docker-machine start ${C_DOCKER_MACHINE}
+        dmshell
+      }
+
+      dmshell() {
+        eval $(docker-machine env docker-vm)
+      }
+
+      docker_if_not_running() {
+        if [ $(docker-machine status ${C_DOCKER_MACHINE}) != 'Running' ]; then
+          dminit
+        fi
+      }
+
+      dmhosts() {
+        DMHOSTNAME="dockerhost"
+
+        sudo -v
+
+        grep ${DMHOSTNAME} /etc/hosts > /dev/null && sudo sed -i '' "/${DMHOSTNAME}/d" /etc/hosts
+        sudo echo "$(docker-machine ip ${C_DOCKER_MACHINE}) ${DMHOSTNAME}" | sudo tee -a /etc/hosts
+      }
+
+
+    fi # end docker-machine
+
+ # Xquartz stuff
+    xquartz_if_not_running() {
+      v_nolisten_tcp=$(defaults read org.macosforge.xquartz.X11 nolisten_tcp)
+      v_xquartz_app=$(defaults read org.macosforge.xquartz.X11 app_to_run)
+
+      if [ $v_nolisten_tcp == "1" ]; then
+        defaults write org.macosforge.xquartz.X11 nolisten_tcp 0
+      fi
+
+      if [ $v_xquartz_app != "/usr/bin/true" ]; then
+        defaults write org.macosforge.xquartz.X11 app_to_run /usr/bin/true
+      fi
+
+      netstat -an | grep 6000 &> /dev/null || open -a XQuartz
+      while ! netstat -an \| grep 6000 &> /dev/null; do
+        sleep 2
+      done
+      export DISPLAY=:0
+    }
+
+dockerchrome() {
+      xhost +$(docker-machine ip ${C_DOCKER_MACHINE})
+
+      docker run \
+        --rm \
+        --memory 512mb \
+        --net host \
+        --security-opt seccomp:unconfined \
+        -e DISPLAY=$(docker-machine inspect ${C_DOCKER_MACHINE} --format={{.Driver.HostOnlyCIDR}} | cut -d'/' -f1):0 \
+        jess/chrome
+    }
 #sourcing kubectl 
 source ~/.vim/zsh/zsh-kube

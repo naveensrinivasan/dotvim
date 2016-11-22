@@ -5,7 +5,7 @@ export ZSH=/Users/naveen/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="sonicradish"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,7 +49,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx docker kubectl)
+plugins=(git osx docker kubectl ssh-agent)
 
 # User configuration
 
@@ -111,7 +111,9 @@ alias kap='kubectl get po --all-namespaces'
 alias kp='kubectl get po'
 
 
-kl() {kubectl get pod -l $1  -o name | cut -d'/' -f2 | xargs -I{} kubectl log {}}
+klog() {kubectl get pod -l $1  -o name | cut -d'/' -f2 | xargs -I{} kubectl log {}}
+
+ksecret() { k get secret jenkins -o yaml | grep $1| awk -F"$1:" '{print $2}' |base64 -D}
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -182,6 +184,7 @@ docker-ip() {
 #doker linter
 #https://github.com/lukasmartinelli/hadolint
 alias dlint="docker run --rm -i lukasmartinelli/hadolint <"
+alias python='python3'
 
 cdf() {
     target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`

@@ -19,6 +19,7 @@ ZSH_THEME="sonicradish"
 
 # Uncomment the following line to change how often to auto-update (in days).
  export UPDATE_ZSH_DAYS=13
+ export HISTCONTROL=ignoreboth:erasedups
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -59,6 +60,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 #go path
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export PATH=$PATH:$GOPATH/bin
+export GITHUB_TOKEN=f5aa0728449a482451f5dbb67fcd3aaa369a7c21
 
 
 
@@ -160,6 +162,9 @@ dstop() { docker stop $(docker ps -a -q); }
 # Stop and Remove all containers
 alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 
+newgoprj() {mkdir -p $GOPATH/src/github.com/naveensrinivasan/$1}
+goprj() {cd $GOPATH/src/github.com/naveensrinivasan/$1}
+
 # Remove all images
 dri() { docker rmi --force $(docker images -q); }
 
@@ -227,36 +232,5 @@ cdf() {
 
     fi # end docker-machine
 
- # Xquartz stuff
-    xquartz_if_not_running() {
-      v_nolisten_tcp=$(defaults read org.macosforge.xquartz.X11 nolisten_tcp)
-      v_xquartz_app=$(defaults read org.macosforge.xquartz.X11 app_to_run)
-
-      if [ $v_nolisten_tcp == "1" ]; then
-        defaults write org.macosforge.xquartz.X11 nolisten_tcp 0
-      fi
-
-      if [ $v_xquartz_app != "/usr/bin/true" ]; then
-        defaults write org.macosforge.xquartz.X11 app_to_run /usr/bin/true
-      fi
-
-      netstat -an | grep 6000 &> /dev/null || open -a XQuartz
-      while ! netstat -an \| grep 6000 &> /dev/null; do
-        sleep 2
-      done
-      export DISPLAY=:0
-    }
-
-dockerchrome() {
-      xhost +$(docker-machine ip ${C_DOCKER_MACHINE})
-
-      docker run \
-        --rm \
-        --memory 512mb \
-        --net host \
-        --security-opt seccomp:unconfined \
-        -e DISPLAY=$(docker-machine inspect ${C_DOCKER_MACHINE} --format={{.Driver.HostOnlyCIDR}} | cut -d'/' -f1):0 \
-        jess/chrome
-    }
 #sourcing kubectl 
 source ~/.vim/zsh/zsh-kube

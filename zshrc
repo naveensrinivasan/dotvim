@@ -60,7 +60,6 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 #go path
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export PATH=$PATH:$GOPATH/bin
-export GITHUB_TOKEN=f5aa0728449a482451f5dbb67fcd3aaa369a7c21
 
 
 
@@ -234,3 +233,5 @@ cdf() {
 
 #sourcing kubectl 
 source ~/.vim/zsh/zsh-kube
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

@@ -1,54 +1,156 @@
-brew install atool
-brew install aws-shell
-brew install blackbox
-brew install boot2docker
-brew install cabextract
-brew install coreutils
-brew install curl
-brew install aspnet/dnx/dnvm
-brew install elinks
-brew install exiftool
-brew install findutils
-brew install gawk
-brew install git
-brew install gnu-getopt
-brew install gnu-indent
-brew install gnu-sed
-brew install gnu-tar
-brew install gnupg
-brew install gnutls
-brew install gradle
-brew install haskell-stack
-brew install highlight
-brew install hub
-brew install jq
-brew install kotlin
-brew install libcaca
-brew install lynx
-brew install macvim
-brew install maven
-brew install media-info
-brew install mtr
-brew install neovim/neovim/neovim
-brew install node
-brew install osquery
-brew install poppler
-brew install putty
-brew install python
-brew install ranger
-brew install thoughtbot/formulae/rcm
-brew install rust
-brew install s3cmd
-brew install sbt
-brew install scala
-brew install tmux
-brew install tomcat
-brew install transmission
-brew install tree
-brew install unrar
-brew install vegeta
-brew install vim
-brew install w3m
-brew install wget
-brew install zsh-syntax-highlighting
-brew cask install macdown
+asio
+atool
+augeas
+autoconf
+automake
+aws-shell
+bash-completion
+bdw-gc
+blackbox
+boot2docker
+cabextract
+cairo
+cask
+certbot
+cmake
+coreutils
+cpp-netlib
+cscope
+curl
+delve
+dialog
+dirmngr
+dnsmasq
+dnvm
+docker
+drone
+elinks
+emacs
+exiftool
+fdupes
+ffmpeg
+findutils
+fish
+fontconfig
+freetype
+frege
+gawk
+gdbm
+gettext
+gflags
+git
+git-extras
+git-lfs
+glib
+glide
+glog
+gmp
+gnu-getopt
+gnu-indent
+gnu-sed
+gnu-tar
+gnupg
+gnupg2
+gnutls
+go
+gobject-introspection
+gpg-agent
+gradle
+haskell-stack
+highlight
+htop
+hub
+hugo
+jmeter
+jpeg
+jq
+kotlin
+kubernetes-cli
+lame
+libassuan
+libcaca
+libevent
+libffi
+libgcrypt
+libgpg-error
+libksba
+libmagic
+libpng
+libressl
+libssh2
+libtasn1
+libtiff
+libtool
+libusb
+libusb-compat
+libxml2
+libyaml
+little-cms2
+lua
+lynx
+lz4
+macvim
+mas
+maven
+media-info
+mercurial
+mono
+mpfr
+mtr
+mupdf
+mutt
+mycli
+mysql
+neovim
+nettle
+node
+oniguruma
+openjpeg
+openssl
+osquery
+pcre
+pcre2
+pinentry
+pixman
+pkg-config
+poppler
+pth
+putty
+pv
+python
+python3
+ranger
+rcm
+readline
+rocksdb
+ruby
+rust
+s3cmd
+sbt
+shellcheck
+sleuthkit
+snappy
+socat
+sonar-runner
+sqlite
+terraform
+thrift
+tmux
+tokyo-cabinet
+tomcat
+transmission
+tree
+unrar
+vagrant-completion
+vegeta
+vim
+w3m
+wget
+x264
+xvid
+xz
+yara
+youtube-dl
+zlib
+zsh
+zsh-syntax-highlighting

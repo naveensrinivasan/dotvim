@@ -65,9 +65,8 @@ export PATH=$PATH:$GOPATH/bin
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-source $ZSH/oh-my-zsh.sh
+source /Users/naveen.srinivasan/.oh-my-zsh/oh-my-zsh.sh
 # aws 
-source /usr/local/bin/aws_zsh_completer.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -200,38 +199,11 @@ cdf() {
 }
 
 
-  # docker-machine stuff
-    if [ $(which docker-machine) ]; then
-      export C_DOCKER_MACHINE="docker-vm"
-
-      dminit() {
-        docker-machine start ${C_DOCKER_MACHINE}
-        dmshell
-      }
-
-      dmshell() {
-        eval $(docker-machine env docker-vm)
-      }
-
-      docker_if_not_running() {
-        if [ $(docker-machine status ${C_DOCKER_MACHINE}) != 'Running' ]; then
-          dminit
-        fi
-      }
-
-      dmhosts() {
-        DMHOSTNAME="dockerhost"
-
-        sudo -v
-
-        grep ${DMHOSTNAME} /etc/hosts > /dev/null && sudo sed -i '' "/${DMHOSTNAME}/d" /etc/hosts
-        sudo echo "$(docker-machine ip ${C_DOCKER_MACHINE}) ${DMHOSTNAME}" | sudo tee -a /etc/hosts
-      }
-
-
-    fi # end docker-machine
-
 #sourcing kubectl 
 source ~/.vim/zsh/zsh-kube
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+kubecontext=$(kubectl config current-context)
+
+PROMPT='%{$ROOT_ICON_COLOR%}$ROOT_ICON%{$reset_color%}%{$MACHINE_NAME_COLOR%}%m➜  %{$reset_color%}%{$PROMPT_SUCCESS_COLOR%}%c%{$reset_color%} %{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status) %{$reset_color%}%{$PROMPT_PROMPT%}%{$kubecontext ᐅ %{$reset_color%} '
+

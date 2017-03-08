@@ -19,3 +19,7 @@ git config --global user.name "naveen"
 git config --global user.email "nsrinivasan1976@gmail.com"
 
 git config --global credential.helper osxkeychain
+
+git config --global user.signingkey 408593DE
+
+git config --global commit.gpgsign true

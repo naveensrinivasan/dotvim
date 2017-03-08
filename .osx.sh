@@ -23,3 +23,6 @@ git config --global credential.helper osxkeychain
 git config --global user.signingkey 408593DE
 
 git config --global commit.gpgsign true
+
+#sign commits
+git config --global alias.commit commit -S

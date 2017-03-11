@@ -5,7 +5,7 @@ export ZSH=/Users/naveen/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="sonicradish"
+ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -204,6 +204,4 @@ source ~/.vim/zsh/zsh-kube
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 kubecontext=$(kubectl config current-context)
-
-PROMPT='%{$ROOT_ICON_COLOR%}$ROOT_ICON%{$reset_color%}%{$MACHINE_NAME_COLOR%}%m➜  %{$reset_color%}%{$PROMPT_SUCCESS_COLOR%}%c%{$reset_color%} %{$GIT_PROMPT_INFO%}$(git_prompt_info)%{$GIT_DIRTY_COLOR%}$(git_prompt_status) %{$reset_color%}%{$PROMPT_PROMPT%}%{$kubecontext ᐅ %{$reset_color%} '
-
+kubenamespace=$(kubectl config view -o jsonpath='{.contexts[0].context.namespace}')

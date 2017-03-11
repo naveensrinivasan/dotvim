@@ -20,9 +20,9 @@ if has("gui_running")
     au GUIEnter * silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz  
   endif
 if has("gui_macvim")
-    set guifont=Fira\ Code:h16
+    set guifont=Menlo\ Regular:h18
 else
-    set guifont=Fira\ Code:h16
+    set guiont=Fira\ Code:h16
 endif
 endif
 
@@ -154,8 +154,6 @@ endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 

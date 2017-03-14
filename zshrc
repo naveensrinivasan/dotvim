@@ -188,20 +188,5 @@ docker-ip() {
 #https://github.com/lukasmartinelli/hadolint
 alias dlint="docker run --rm -i lukasmartinelli/hadolint <"
 alias python='python3'
+alias lockscreen='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 
-cdf() {
-    target=`osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)'`
-    if [ "$target" != "" ]; then
-        cd "$target"; pwd
-    else
-        echo 'No Finder window found' >&2
-    fi
-}
-
-
-#sourcing kubectl 
-source ~/.vim/zsh/zsh-kube
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-kubecontext=$(kubectl config current-context)
-kubenamespace=$(kubectl config view -o jsonpath='{.contexts[0].context.namespace}')

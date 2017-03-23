@@ -117,6 +117,19 @@ au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 
 au FileType go nmap <Leader>gd <Plug>(go-doc)
+"============== Control P=================
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip 
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+" Ctrl- P mapping and two custom split keymappings (https://github.com/kien/ctrlp.vim)
+let g:ctrlp_map = '<c-p>'
+nmap <c-n>s :split<CR><c-w>j<c-p>
+nmap <c-n>v :vsplit<CR><c-w>l<c-p>
 "===============NeoComplete ================
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.

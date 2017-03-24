@@ -109,6 +109,8 @@ alias git=hub
 alias k='kubectl'
 alias kap='kubectl get po --all-namespaces'
 alias kp='kubectl get po'
+alias ksc='kubectl get secrets'
+alias ks='kubectl get services'
 
 
 klog() {kubectl get pod -l $1  -o name | cut -d'/' -f2 | xargs -I{} kubectl log {}}

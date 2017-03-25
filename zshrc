@@ -129,6 +129,8 @@ POD=$(kubectl get pods  --selector $3 \
   -o template --template '{{range .items}}{{.metadata.name}} {{.status.phase}}{{"\n"}}{{end}}' \
   | grep Running | head -1 | cut -f1 -d' ')
 kubectl port-forward  $POD $4:$ADMINPORT &
+sleep 2
+open http://localhost:9000
 }
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

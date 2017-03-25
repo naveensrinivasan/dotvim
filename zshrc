@@ -75,7 +75,7 @@ source /Users/naveen.srinivasan/.oh-my-zsh/oh-my-zsh.sh
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
  else
-   export EDITOR='mvim'
+   export EDITOR='vim'
  fi
 
 # Compilation flags
@@ -112,11 +112,24 @@ alias kp='kubectl get po'
 alias ksc='kubectl get secrets'
 alias ks='kubectl get services'
 
+#Port forward to linkerd
+l5admin(){ kportforward l5d admin app=l5d 9000}
 
-klog() {kubectl get pod -l $1  -o name | cut -d'/' -f2 | xargs -I{} kubectl log {}}
+#clean up l5d admin port forwarding
+l5clean(){lsof -t -i tcp:9000 | xargs kill}
 
-ksecret() { k get secret jenkins -o yaml | grep $1| awk -F"$1:" '{print $2}' |base64 -D}
-
+#Port forward k8s
+# $1 servicename
+# $2 portname
+# $3 pod selector
+# $4 local port
+kportforward() {
+ADMINPORT=$(kubectl get svc $1  -o json |jq '.spec.ports[]| select(.name=="'$2'").port')
+POD=$(kubectl get pods  --selector $3 \
+  -o template --template '{{range .items}}{{.metadata.name}} {{.status.phase}}{{"\n"}}{{end}}' \
+  | grep Running | head -1 | cut -f1 -d' ')
+kubectl port-forward  $POD $4:$ADMINPORT &
+}
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

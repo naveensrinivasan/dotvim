@@ -172,13 +172,8 @@ alias ga="alias | grep"
 
 # Stop all containers
 dstop() { docker stop $(docker ps -a -q); }
-
-
 # Stop and Remove all containers
 alias drmf='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
-
-newgoprj() {mkdir -p $GOPATH/src/github.com/naveensrinivasan/$1}
-goprj() {cd $GOPATH/src/github.com/naveensrinivasan/$1}
 
 # Remove all images
 dri() { docker rmi --force $(docker images -q); }
@@ -186,6 +181,8 @@ dri() { docker rmi --force $(docker images -q); }
 # Dockerfile build, e.g., $dbu tcnksm/test 
 dbu() { docker build -t=$1 .; }
 
+newgoprj() {mkdir -p $GOPATH/src/github.com/naveensrinivasan/$1}
+goprj() {cd $GOPATH/src/github.com/naveensrinivasan/$1}
 # Show all alias related docker
 dalias() { alias | grep 'docker' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
 
@@ -195,6 +192,7 @@ kalias() { alias | grep 'kubectl' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/
 # show all alias realted kubectl
 galias() { alias | grep 'git' | sed "s/^\([^=]*\)=\(.*\)/\1 => \2/"| sed "s/['|\']//g" | sort; }
 
+fdelete() { find . -name $1 -print0 | xargs -0 rm}
 
 # Get docker machine ip
 docker-ip() {
@@ -203,7 +201,7 @@ docker-ip() {
 
 #doker linter
 #https://github.com/lukasmartinelli/hadolint
-alias dlint="docker run --rm -i lukasmartinelli/hadolint <"
+alias dlint="docker run --rm -i  lukasmartinelli/hadolint <"
 alias python='python3'
 alias lockscreen='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 

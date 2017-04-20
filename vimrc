@@ -48,6 +48,7 @@ set autochdir                   "Change dir automatically
 set cursorline
 set wildmenu                    "autocomplete filename
 set lazyredraw          " redraw only when we need to.
+set colorcolumn=100
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -109,7 +110,14 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1  
 let g:go_highlight_build_constraints = 1  
 let g:go_fmt_command = "goimports"
-
+let g:go_auto_type_info = 1
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_enabled = ['vet','golint','errcheck','lll','unused','unparam','aligncheck','vet','deadcode','gocyclo','varcheck','structcheck','goconst','gosimple']  
+let g:go_metalinter_autosave_enabled = ['vet', 'golint' ]
+let g:go_metalinter_deadline = "15s"
+let g:go_auto_sameids = 1
+set updatetime=100
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
 
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
@@ -117,6 +125,8 @@ au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 
 au FileType go nmap <Leader>gd <Plug>(go-doc)
+set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 "============== Control P=================
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip 

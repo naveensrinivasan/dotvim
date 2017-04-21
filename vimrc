@@ -32,6 +32,7 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_powerline_fonts = 1
 
 " ================ General Config ===================={{{1
 
@@ -49,6 +50,9 @@ set cursorline
 set wildmenu                    "autocomplete filename
 set lazyredraw          " redraw only when we need to.
 set colorcolumn=100
+set t_Co=256
+let g:Powerline_symbols = "fancy"
+set laststatus=2
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -60,8 +64,29 @@ set directory=$TMPDIR//
 "turn on syntax highlighting
 syntax on
 syntax enable   " enable syntax processing
+" ================ TMUX SETTINGS ==================={{{1
+if $TMUX != '' 
+  function! TmuxSharedYank()
+      " Send the contents of the 't' register to a temporary file, invoke
+      " copy to tmux using load-buffer, and then to xclip
+      " FIXME for some reason, the 'tmux load-buffer -' form will hang
+      " when used with 'system()' which takes a second argument as stdin.
+      let tmpfile = tempname()
+      call writefile(split(@t, '\n'), tmpfile, 'b')
+      call system('tmux load-buffer '.shellescape(tmpfile).';tmux show-buffer | xclip -i -selection clipboard')
+      call delete(tmpfile)
+    endfunction
 
-" ================ Search Settings  ================={{{1
+    function! TmuxSharedPaste()
+      " put tmux copy buffer into the t register, the mapping will handle
+      " pasting into the buffer
+      let @t = system('xclip -o -selection clipboard | tmux load-buffer -;tmux show-buffer')
+    endfunction
+    nnoremap <silent> <esc>p :call TmuxSharedPaste()<cr>"tp
+    vnoremap <silent> <esc>p d:call TmuxSharedPaste()<cr>h"tp  
+    set clipboard= " Use this or vim will automatically put deleted text into x11 selection('*' register) which breaks the above map
+endif
+" ================ SEARCH SETTINGS  ================={{{1
 set incsearch        "Find the next match as we type the search
 set hlsearch         "Highlight searches by default
 set viminfo='100,f1  "Save up to 100 marks, enable capital marks
@@ -112,9 +137,9 @@ let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 let g:go_metalinter_autosave = 1
-let g:go_metalinter_enabled = ['vet','golint','errcheck','lll','unused','unparam','aligncheck','vet','deadcode','gocyclo','varcheck','structcheck','goconst','gosimple']  
+let g:go_metalinter_enabled = ['vet','golint','errcheck','lll','unused','unparam','aligncheck','vet','deadcode','gocyclo','varcheck','structcheck','goconst','gosimple','gas','unconvert','dupl','interfacer','goconst','misspell','staticcheck']  
 let g:go_metalinter_autosave_enabled = ['vet', 'golint' ]
-let g:go_metalinter_deadline = "15s"
+let g:go_metalinter_deadline = "35s"
 let g:go_auto_sameids = 1
 set updatetime=100
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
@@ -126,6 +151,7 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+set rtp+=/usr/local/opt/fzf
 autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 "============== Control P=================
 set runtimepath^=~/.vim/bundle/ctrlp.vim

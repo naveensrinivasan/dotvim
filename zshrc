@@ -52,6 +52,7 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git osx docker kubectl ssh-agent)
 
+
 # User configuration
 
 export GOPATH=$HOME/Go

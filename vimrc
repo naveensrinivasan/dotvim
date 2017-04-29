@@ -34,6 +34,11 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
 
+"===================auto save==================
+let g:auto_save = 1 " enable AutoSave on Vim startup
+
+let g:auto_save_silent = 1  " do not display the auto-save notification
+
 " ================ General Config ===================={{{1
 
 set number                      "Line numbers are good
@@ -302,9 +307,6 @@ nnoremap <C-l> <C-w>l
 :noremap <c-s> :w<CR>
 :inoremap <c-s> <Esc>:w<CR>
 
-" save automatically when text is changed
-set updatetime=200
-au CursorHold * silent! update
 " save session
 :nnoremap <leader>s :mksession<CR>
 "========== vimrc ==============={{{2
@@ -328,3 +330,13 @@ function! GenerateLineNumbers()
  %s/^/\=printf('%-4d', line('.'))
 endfunction
 
+"=================Snippets======================{{{1
+let g:UltiSnipsExpandTrigger="<c-j>"
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories = ['.vim/UltiSnips', 'UltiSnips','fatih/vim-go']

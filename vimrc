@@ -35,7 +35,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
 
 "===================auto save==================
-let g:auto_save = 1 " enable AutoSave on Vim startup
+let g:auto_save = 0 " enable AutoSave on Vim startup
 
 let g:auto_save_silent = 1  " do not display the auto-save notification
 
@@ -142,7 +142,7 @@ let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 let g:go_metalinter_autosave = 1
-let g:go_metalinter_enabled = ['vet','golint','errcheck','lll','unused','unparam','aligncheck','vet','deadcode','gocyclo','varcheck','structcheck','goconst','gosimple','gas','unconvert','dupl','interfacer','goconst','misspell','staticcheck']  
+let g:go_metalinter_enabled = ['vet','golint','errcheck','unused','unparam','aligncheck','vet','deadcode','gocyclo','varcheck','structcheck','goconst','gosimple','gas','unconvert','dupl','interfacer','goconst','misspell','staticcheck']  
 let g:go_metalinter_autosave_enabled = ['vet', 'golint' ]
 let g:go_metalinter_deadline = "35s"
 let g:go_auto_sameids = 1
@@ -154,7 +154,7 @@ au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 
-au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>g <Plug>(go-doc)
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 set rtp+=/usr/local/opt/fzf
 autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
@@ -251,6 +251,10 @@ let g:vimclojure#ParenRainbow = 1
 
 "================= Key bindings ============={{{1
 let mapleader=","
+"Quickly switching buffers in Vim normal mode
+map gn :bn<cr>
+map gp :bp<cr>
+map gd :bd<cr>
 " Arrow keys movement{{{2
 nnoremap <Up> <NOP>
 nnoremap <Down> <NOP>

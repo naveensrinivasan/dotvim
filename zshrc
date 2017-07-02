@@ -129,9 +129,12 @@ ADMINPORT=$(kubectl get svc $1  -o json |jq '.spec.ports[]| select(.name=="'$2'"
 POD=$(kubectl get pods  --selector $3 \
   -o template --template '{{range .items}}{{.metadata.name}} {{.status.phase}}{{"\n"}}{{end}}' \
   | grep Running | head -1 | cut -f1 -d' ')
+echo $POD
+echo $4
+echo $ADMINPORT
 kubectl port-forward  $POD $4:$ADMINPORT &
 sleep 2
-open http://localhost:9000
+open http://localhost:$4
 }
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -219,3 +222,13 @@ function pet-select() {
 }
 zle -N pet-select
 bindkey '^s' pet-select
+
+# Enable Ctrl-x-e to edit command line
+autoload -U edit-command-line
+# Emacs style
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+# Vi style:
+# zle -N edit-command-line
+# bindkey -M vicmd v edit-command-line

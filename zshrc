@@ -114,10 +114,14 @@ alias ksc='kubectl get secrets'
 alias ks='kubectl get services'
 
 #Port forward to linkerd
-l5admin(){ kportforward l5d admin app=l5d 9000}
+prom(){ 
+  promclean
+  export POD_NAME=$(kubectl get pods --namespace katana -l "app=prometheus,component=server" -o jsonpath="{.items[0].metadata.name}")
+  kubectl --namespace katana port-forward $POD_NAME 9090 
+  }
 
 #clean up l5d admin port forwarding
-l5clean(){lsof -t -i tcp:9000 | xargs kill}
+promclean(){lsof -t -i tcp:9090 | xargs kill}
 
 #Port forward k8s
 # $1 servicename
@@ -206,7 +210,6 @@ docker-ip() {
 #doker linter
 #https://github.com/lukasmartinelli/hadolint
 alias dlint="docker run --rm -i  lukasmartinelli/hadolint <"
-alias python='python3'
 alias lockscreen='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend'
 
 
@@ -232,3 +235,27 @@ bindkey '^x^e' edit-command-line
 # Vi style:
 # zle -N edit-command-line
 # bindkey -M vicmd v edit-command-line
+#!/bin/bash
+alias util='kubectl get nodes --no-headers | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo {} ; kubectl describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
+
+# Get CPU request total (we x20 because because each m3.large has 2 vcpus (2000m) )
+alias cpualloc='util | grep % | awk '\''{print $1}'\'' | awk '\''{ sum += $1 } END { if (NR > 0) { print sum/(NR*20), "%\n" } }'\'''
+
+# Get mem request total (we x75 because because each m3.large has 7.5G ram )
+alias memalloc='util | grep % | awk '\''{print $5}'\'' | awk '\''{ sum += $1 } END { if (NR > 0) { print sum/(NR*75), "%\n" } }'\'''
+
+_apex()  {
+  COMPREPLY=()
+  local cur="${COMP_WORDS[COMP_CWORD]}"
+  local opts="$(apex autocomplete -- ${COMP_WORDS[@]:1})"
+  COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+  return 0
+}
+
+complete -F _apex apex
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/naveen.srinivasan/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/naveen.srinivasan/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/naveen.srinivasan/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/naveen.srinivasan/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

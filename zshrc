@@ -57,6 +57,7 @@ plugins=(git osx docker kubectl ssh-agent)
 
 export GOPATH=$HOME/Go
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export GOBIN=$GOPATH/bin
 
 #go path
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
@@ -112,6 +113,7 @@ alias kap='kubectl get po --all-namespaces'
 alias kp='kubectl get po'
 alias ksc='kubectl get secrets'
 alias ks='kubectl get services'
+alias h='helm'
 
 #Port forward to linkerd
 prom(){ 
@@ -122,6 +124,25 @@ prom(){
 
 #clean up l5d admin port forwarding
 promclean(){lsof -t -i tcp:9090 | xargs kill}
+
+promnaveen(){ 
+  promclean
+  export POD_NAME=$(kubectl get pods --namespace katana -l "release=prom-naveen" -o jsonpath="{.items[0].metadata.name}")
+  kubectl --namespace katana port-forward $POD_NAME 9090 
+  }
+
+
+b64cp(){
+  echo $1 | base64 
+  echo $1 | base64 | pbcopy
+}
+
+
+rn(){
+  echo -n  $1 |base64 -D | tr -d '\n' | base64 | pbcopy
+  echo -n  $1 |base64 -D | tr -d '\n' | base64 
+}
+
 
 #Port forward k8s
 # $1 servicename
@@ -259,3 +280,22 @@ if [ -f '/Users/naveen.srinivasan/Downloads/google-cloud-sdk/path.zsh.inc' ]; th
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/naveen.srinivasan/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/naveen.srinivasan/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+source <(kops completion zsh)
+source <(helm completion zsh)
+
+removecontainers() {
+    docker stop $(docker ps -aq)
+    docker rm $(docker ps -aq)
+}
+
+armaggedon() {
+    removecontainers
+    docker network prune -f
+    docker rmi -f $(docker images --filter dangling=true -qa)
+    docker volume rm $(docker volume ls --filter dangling=true -q)
+    docker rmi -f $(docker images -qa)
+}
+
+# added by travis gem
+[ -f /Users/naveen.srinivasan/.travis/travis.sh ] && source /Users/naveen.srinivasan/.travis/travis.sh
+

@@ -5,7 +5,7 @@ export ZSH=/Users/naveen/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -50,11 +50,10 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx docker kubectl ssh-agent)
+plugins=(git osx docker kubectl ssh-agent tmux tmuxinator zsh-autosuggestions)
 
 
 # User configuration
-
 export GOPATH=$HOME/Go
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export GOBIN=$GOPATH/bin
@@ -68,6 +67,34 @@ export PATH=$PATH:$GOPATH/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source /Users/naveen.srinivasan/.oh-my-zsh/oh-my-zsh.sh
+#
+POWERLEVEL9K_MODE='awesome-patched'
+
+# Disable dir/git icons
+POWERLEVEL9K_HOME_ICON=''
+POWERLEVEL9K_HOME_SUB_ICON=''
+POWERLEVEL9K_FOLDER_ICON=''
+
+DISABLE_AUTO_TITLE="true"
+
+POWERLEVEL9K_VCS_STAGED_ICON='\u00b1'
+POWERLEVEL9K_VCS_UNTRACKED_ICON='\u25CF'
+POWERLEVEL9K_VCS_UNSTAGED_ICON='\u00b1'
+POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\u2193'
+POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
+POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='yellow'
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='yellow'
+POWERLEVEL9K_VCS_UNTRACKED_ICON='?'
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(kubecontext os_icon context dir vcs)
+POWERLEVEL9K_DISABLE_RPROMPT=true
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
+
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M \uE868  %d.%m.%y}"
+
+POWERLEVEL9K_STATUS_VERBOSE=true
+export DEFAULT_USER="$USER"
 # aws 
 
 # You may need to manually set your language environment
@@ -125,13 +152,9 @@ prom(){
 #clean up l5d admin port forwarding
 promclean(){lsof -t -i tcp:9090 | xargs kill}
 
-promnaveen(){ 
-  promclean
-  export POD_NAME=$(kubectl get pods --namespace katana -l "release=prom-naveen" -o jsonpath="{.items[0].metadata.name}")
-  kubectl --namespace katana port-forward $POD_NAME 9090 
-  }
-
-
+getlabel (){
+kubectl get deployment $1  -o json |  jq --raw-output '.metadata.labels'
+}
 b64cp(){
   echo $1 | base64 
   echo $1 | base64 | pbcopy
@@ -299,3 +322,15 @@ armaggedon() {
 # added by travis gem
 [ -f /Users/naveen.srinivasan/.travis/travis.sh ] && source /Users/naveen.srinivasan/.travis/travis.sh
 
+function forwardAuth {
+        lsof -t -i tcp:10103 | xargs kill
+        local auth=$(kp --all-namespaces | grep "auth3-bulwark" | awk '{print $2}' | sed -n 1p)
+        kubectl -n katana port-forward $auth 10103:10103
+}
+alias mongo-start='docker run -itd -p 127.0.0.1:27017:27017 -d mongo:3.4.6'
+alias tar='gtar'
+### Wrapper for env
+export WORKON_HOME=$HOME/.virtualenv
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
+source /usr/local/bin/virtualenvwrapper.sh
+export GOROOT=/usr/local/opt/go/libexec

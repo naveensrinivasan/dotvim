@@ -14,16 +14,10 @@ syntax on
 "=============== Window setttings==============================={{{1
 " Maximize the window
 if has("gui_running")
-  if has("win32")
-    au GUIEnter * simalt ~x 
-  else
-    au GUIEnter * silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz  
-  endif
-if has("gui_macvim")
-    set guifont=Menlo\ Regular:h18
-else
-    set guiont=Fira\ Code:h16
-endif
+   let s:uname = system("uname")
+   if s:uname == "Darwin\n"
+      set guifont=Meslo\ LG\ S\ for\ Powerline
+   endif
 endif
 
 " ================ Plugins ===================={{{1

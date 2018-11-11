@@ -16,7 +16,7 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 #git settings
 git config --global user.name "naveen"
 
-git config --global user.email "nsrinivasan1976@gmail.com"
+git config --global user.email "172697+naveensrinivasan@users.noreply.github.com"
 
 git config --global credential.helper osxkeychain
 

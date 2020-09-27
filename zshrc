@@ -109,5 +109,11 @@ kubectl get po -l=istio=ingressgateway -o=jsonpath='{.items[0].metadata.name}' -
 alias vim="nvim"
 alias k="kubectl"
 alias kns="kubens"
+eval $(docker-machine env default)
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 OPENAI_API_KEY=$(security find-generic-password -a "$USER" -s "openai" -w)
+VIMGOLF=$(security find-generic-password -a "$USER" -s "vimgolf" -w)
+
+function golf(){
+docker run --rm -it -e key=$VIMGOLF kramos/vimgolf
+}

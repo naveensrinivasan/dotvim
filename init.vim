@@ -5,34 +5,48 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-" Required:
-set runtimepath+=~/.vim/bundle/neobundle.vim/
+call plug#begin()
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
 
-" Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
+" Any valid git URL is allowed
+Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+Plug 'https://github.com/xavierd/clang_complete'
 
-" My Bundles here:
-" Refer to |:NeoBundle-examples|.
-" Note: You don't set neobundle setting in .gvimrc!
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'jessfraz/openai.vim'
+Plug 'https://github.com/ycm-core/YouCompleteMe'
 
-call neobundle#end()
+Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-clang'
+
+" Multiple Plug commands can be written in a single line using | separators
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" Using a non-default branch
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+Plug 'fatih/vim-go', { 'tag': '*' }
+
+" Plugin options
+Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+Plug 'https://github.com/xavierd/clang_complete'
+
+" Plugin outside ~/.vim/plugged with post-update hook
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+call plug#end()
+
 
 " Required:
 filetype plugin indent on
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
-NeoBundleCheck
 
 filetype plugin indent on
 " vim: foldmethod=marker
@@ -151,7 +165,6 @@ set sidescrolloff=15
 set sidescroll=1
 " ================ Color ========================
 set background=dark
-colors badwolf
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar

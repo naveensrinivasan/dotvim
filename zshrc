@@ -98,22 +98,43 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-#To use LibreSSL and curl installed by Homebrew, it is important to update your path. You can add the following to your shell profile. Currently we're using zsh where the file you need to alter is ~/.zshrc
+#To use LibreSSL and curl installed by Homebrew, it is important to update your path.
+#You can add the following to your shell profile.
+#Currently we're using zsh where the file you need to alter is ~/.zshrc
 export PATH="/usr/local/opt/curl/bin:$PATH"
 export PATH="/usr/local/opt/libressl/bin:$PATH"
 export PATH="/Users/naveen/go/bin:$PATH"
-INGRESSPOD(){
-kubectl get po -l=istio=ingressgateway -o=jsonpath='{.items[0].metadata.name}' -n istio-system
-}
+export PATH=$PATH:$GOPATH/bin
 
+alias python='/usr/local/bin/python3' 
 alias vim="nvim"
+#k8s alias
 alias k="kubectl"
 alias kns="kubens"
-eval $(docker-machine env default)
-[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
-OPENAI_API_KEY=$(security find-generic-password -a "$USER" -s "openai" -w)
-VIMGOLF=$(security find-generic-password -a "$USER" -s "vimgolf" -w)
 
 function golf(){
 docker run --rm -it -e key=$VIMGOLF kramos/vimgolf
 }
+
+function startup(){
+  go run ~/.vim/startup/startup.go
+}
+
+function setupdocker(){
+startup()
+eval $(docker-machine env default)
+}
+
+INGRESSPOD(){
+kubectl get po -l=istio=ingressgateway -o=jsonpath='{.items[0].metadata.name}' -n istio-system
+}
+
+function setupvimgolf(){
+OPENAI_API_KEY=$(security find-generic-password -a "$USER" -s "openai" -w)
+VIMGOLF=$(security find-generic-password -a "$USER" -s "vimgolf" -w)
+}
+
+[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+setupdocker()

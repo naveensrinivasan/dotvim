@@ -39,6 +39,7 @@ Plug 'https://github.com/xavierd/clang_complete'
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
+
 call plug#end()
 
 
@@ -169,96 +170,7 @@ set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 
-"=============== GO ====================
-" Highlight
-let g:go_highlight_functions = 1  
-let g:go_highlight_methods = 1  
-let g:go_highlight_structs = 1  
-let g:go_highlight_operators = 1  
-let g:go_highlight_build_constraints = 1  
-let g:go_fmt_command = "goimports"
-let g:go_auto_type_info = 1
-let g:go_metalinter_autosave = 1
-let g:go_metalinter_enabled = ['vet','golint','errcheck','unused','unparam','aligncheck','vet','deadcode','gocyclo','varcheck','structcheck','goconst','gosimple','gas','unconvert','dupl','interfacer','goconst','misspell','staticcheck']  
-let g:go_metalinter_autosave_enabled = ['vet', 'golint' ]
-let g:go_metalinter_deadline = "35s"
-let g:go_auto_sameids = 1
-set updatetime=100
-autocmd FileType go nmap <Leader>i <Plug>(go-info)
 
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-
-au FileType go nmap <Leader>g <Plug>(go-doc)
-set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-set rtp+=/usr/local/opt/fzf
-autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
-"============== Control P=================
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip 
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-" Ctrl- P mapping and two custom split keymappings (https://github.com/kien/ctrlp.vim)
-let g:ctrlp_map = '<c-p>'
-nmap <c-n>s :split<CR><c-w>j<c-p>
-nmap <c-n>v :vsplit<CR><c-w>l<c-p>
-"===============NeoComplete ================
-"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-set completeopt-=preview
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -271,20 +183,6 @@ autocmd Filetype gitcommit setlocal spell colorcolumn=73
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
 
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-"=============== Clojure ====================
-let g:vimclojure#HighlightBuiltins = 1
-let g:vimclojure#ParenRainbow = 1
 
 "================= Key bindings ============={{{1
 let mapleader=","
@@ -328,7 +226,6 @@ nnoremap H 0
 "End of the line 
 nnoremap L $
 "move lines downward
-nnoremap - ddp 
 "move lines upward
 nnoremap _ ddkP 
 "Upper case in visual selection
@@ -363,21 +260,9 @@ nnoremap <leader>sv :so $MYVIMRC<cr>
 :autocmd BufWritePre,BufRead *.html :normal gg=G
 :autocmd BufNewFile,BufRead *.html setlocal nowrap
 " defaulttt indenter for xml files
-autocmd FileType xml setlocal equalprg=xmllint\ --format\ -
-autocmd FileType fsharp :nnoremap <leader>f %!mono ~/.vim/bundle/fantomas/Fantomas.exe --stdout % <CR>
 
 "Generates line numbers to print
 function! GenerateLineNumbers()
  %s/^/\=printf('%-4d', line('.'))
 endfunction
 
-"=================Snippets======================{{{1
-let g:UltiSnipsExpandTrigger="<c-j>"
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetDirectories = ['.vim/UltiSnips', 'UltiSnips','fatih/vim-go'] 

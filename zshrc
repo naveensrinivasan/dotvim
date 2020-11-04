@@ -1,8 +1,17 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/naveen/.oh-my-zsh"
+
+ZSH_DISABLE_COMPFIX=true 
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -73,6 +82,24 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 
+export ZPLUG_HOME=$(brew --prefix)/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+zplug romkatv/powerlevel10k, as:theme, depth:
+
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+
+
+###########################################################
+# Install packages that have not been installed yet
+if ! zplug check ; then
+         zplug install
+fi
+
+zplug load
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -87,6 +114,14 @@ source $ZSH/oh-my-zsh.sh
    export EDITOR='nvim'
  fi
 
+ 
+ # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -98,12 +133,16 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
+alias cfs='cf submit'
+alias bs='brew search'
+alias bb='brew bundle'
 #To use LibreSSL and curl installed by Homebrew, it is important to update your path.
 #You can add the following to your shell profile.
 #Currently we're using zsh where the file you need to alter is ~/.zshrc
 export PATH="/usr/local/opt/curl/bin:$PATH"
 export PATH="/usr/local/opt/libressl/bin:$PATH"
 export PATH="/Users/naveen/go/bin:$PATH"
+export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin
 
 alias python='/usr/local/bin/python3' 
@@ -112,29 +151,15 @@ alias vim="nvim"
 alias k="kubectl"
 alias kns="kubens"
 
-function golf(){
-docker run --rm -it -e key=$VIMGOLF kramos/vimgolf
-}
-
-function startup(){
-  go run ~/.vim/startup/startup.go
-}
-
-function setupdocker(){
-startup()
-eval $(docker-machine env default)
-}
-
-INGRESSPOD(){
-kubectl get po -l=istio=ingressgateway -o=jsonpath='{.items[0].metadata.name}' -n istio-system
-}
-
-function setupvimgolf(){
-OPENAI_API_KEY=$(security find-generic-password -a "$USER" -s "openai" -w)
-VIMGOLF=$(security find-generic-password -a "$USER" -s "vimgolf" -w)
-}
-
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-setupdocker()
+##setupdocker()
+
+
+export JAVA_HOME=$(/usr/libexec/java_home -v 11.0.8)
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

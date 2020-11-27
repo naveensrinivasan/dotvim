@@ -139,6 +139,7 @@ alias bb='brew bundle'
 #To use LibreSSL and curl installed by Homebrew, it is important to update your path.
 #You can add the following to your shell profile.
 #Currently we're using zsh where the file you need to alter is ~/.zshrc
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/curl/bin:$PATH"
 export PATH="/usr/local/opt/libressl/bin:$PATH"
 export PATH="/Users/naveen/go/bin:$PATH"
@@ -163,3 +164,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH="/usr/local/sbin:$PATH"

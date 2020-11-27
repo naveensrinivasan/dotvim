@@ -9,6 +9,7 @@ call plug#begin()
 Plug 'fatih/vim-go'
 Plug 'sjl/badwolf'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 

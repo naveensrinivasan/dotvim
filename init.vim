@@ -10,7 +10,7 @@ Plug 'fatih/vim-go'
 Plug 'sjl/badwolf'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'tpope/vim-fugitive'
-
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 call plug#end()
 
 "fzf

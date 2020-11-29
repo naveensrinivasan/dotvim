@@ -60,6 +60,7 @@ brew "hugo"
 brew "tilt"
 brew "yarn"
 brew "fd"
+brew "ripgrep"
 mas "Enpass", id: 732710998
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434

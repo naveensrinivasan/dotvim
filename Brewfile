@@ -14,6 +14,7 @@ cask "font-mononoki"
 cask "clion"
 cask "font-hack-nerd-font"
 cask "little-snitch"
+cask "zotero"
 brew "curl"
 brew "go"
 brew "httpie"
@@ -58,6 +59,7 @@ brew "golangci-lint"
 brew "hugo"
 brew "tilt"
 brew "yarn"
+brew "fd"
 mas "Enpass", id: 732710998
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434

@@ -13,6 +13,11 @@ Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
+"fzf
+" If installed using git
+set rtp+=~/.fzf
+
+
 colorscheme badwolf
 " Required:
 filetype plugin indent on

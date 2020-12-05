@@ -11,38 +11,18 @@ Plug 'sjl/badwolf'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 Plug 'ap/vim-buftabline'
 call plug#end()
 
-"fzf
-" If installed using git
-set rtp+=~/.fzf
-command! -bang -nargs=*  All
-  \ call fzf#run(fzf#wrap({'source': 'rg --files --hidden --no-ignore-vcs --glob "!{node_modules/*,.git/*}"', 'down': '40%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi --reverse' }))
-
-
-set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
-nnoremap \ :Rg<CR>
-nnoremap <C-p> :FZF<cr>
-nnoremap <Leader>b :Buffers<cr>
-nnoremap <Leader>s :BLines<cr>
-nnoremap <Leader>f :All<cr>
-
 colorscheme badwolf
-" Required:
-filetype plugin indent on
+source $HOME/.vim/plug-vim/fzf-settings.vim
 
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
 
 filetype plugin indent on
-" vim: foldmethod=marker
-" vim: foldcolumn=2
 " =============== Pathogen Initialization ==============={{{1
 syntax on
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
 "=============== Window setttings==============================={{{1
 " Maximize the window
 if has("gui_running")
@@ -288,10 +268,10 @@ nnoremap <leader>' Wa'<esc>bi'<esc>
 "fold
 nnoremap <Space> za
 "======= Split movement ================{{{2
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+"map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 "========= Save ======{{{2
 :noremap <c-s> :w<CR>
 :inoremap <c-s> <Esc>:w<CR>

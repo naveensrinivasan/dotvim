@@ -11,12 +11,23 @@ Plug 'sjl/badwolf'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'airblade/vim-rooter'
+Plug 'ap/vim-buftabline'
 call plug#end()
 
 "fzf
 " If installed using git
 set rtp+=~/.fzf
+command! -bang -nargs=*  All
+  \ call fzf#run(fzf#wrap({'source': 'rg --files --hidden --no-ignore-vcs --glob "!{node_modules/*,.git/*}"', 'down': '40%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi --reverse' }))
 
+
+set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
+nnoremap \ :Rg<CR>
+nnoremap <C-p> :FZF<cr>
+nnoremap <Leader>b :Buffers<cr>
+nnoremap <Leader>s :BLines<cr>
+nnoremap <Leader>f :All<cr>
 
 colorscheme badwolf
 " Required:
@@ -121,6 +132,7 @@ let g:auto_save = 0 " enable AutoSave on Vim startup
 
 let g:auto_save_silent = 1  " do not display the auto-save notification
 
+
 " ================ General Config ===================={{{1
 
 set number                      "Line numbers are good
@@ -208,6 +220,7 @@ filetype indent on
 
 
 set linebreak    "Wrap lines at convenient points
+
 
 " ================ Scrolling ========================{{{1
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
@@ -303,4 +316,5 @@ nnoremap <leader>sv :so $MYVIMRC<cr>
 function! GenerateLineNumbers()
  %s/^/\=printf('%-4d', line('.'))
 endfunction
+
 

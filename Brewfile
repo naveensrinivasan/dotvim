@@ -61,6 +61,7 @@ brew "tilt"
 brew "yarn"
 brew "fd"
 brew "ripgrep"
+brew "the_silver_searcher"
 brew "bat"
 mas "Enpass", id: 732710998
 mas "GarageBand", id: 682658836

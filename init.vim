@@ -14,10 +14,17 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 Plug 'ap/vim-buftabline'
+
+" Track the engine.
+Plug 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
 call plug#end()
 
 colorscheme badwolf
 source $HOME/.vim/plug-vim/fzf-settings.vim
+
+
 
 
 filetype plugin indent on
@@ -123,7 +130,8 @@ set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
-set clipboard=unnamed           "like the OS clipboard as default
+set clipboard^=unnamed           "like the OS clipboard as default
+set clipboard^=unnamedplus          "like the OS clipboard as default
 set autochdir                   "Change dir automatically
 set cursorline
 set wildmenu                    "autocomplete filename

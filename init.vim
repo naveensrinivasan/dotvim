@@ -14,7 +14,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 Plug 'ap/vim-buftabline'
-Plug 'vimwiki/vimwiki'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -133,6 +132,8 @@ set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set clipboard=unnamed           "like the OS clipboard as default
+set clipboard+=unnamedplus           "like the OS clipboard as default
+
 set autochdir                   "Change dir automatically
 set cursorline
 set wildmenu                    "autocomplete filename
@@ -172,7 +173,6 @@ if $TMUX != ''
     endfunction
     nnoremap <silent> <esc>p :call TmuxSharedPaste()<cr>"tp
     vnoremap <silent> <esc>p d:call TmuxSharedPaste()<cr>h"tp  
-    set clipboard= " Use this or vim will automatically put deleted text into x11 selection('*' register) which breaks the above map
 endif
 "go"
 " disable vim-go :GoDef short cut (gd)

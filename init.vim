@@ -14,6 +14,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 Plug 'ap/vim-buftabline'
+Plug 'vimwiki/vimwiki'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -23,6 +24,7 @@ call plug#end()
 
 colorscheme badwolf
 source $HOME/.vim/plug-vim/fzf-settings.vim
+source $HOME/.vim/plug-vim/go-settings.vim
 
 
 
@@ -130,8 +132,7 @@ set showmode                    "Show current mode down the bottom
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
-set clipboard^=unnamed           "like the OS clipboard as default
-set clipboard^=unnamedplus          "like the OS clipboard as default
+set clipboard=unnamed           "like the OS clipboard as default
 set autochdir                   "Change dir automatically
 set cursorline
 set wildmenu                    "autocomplete filename
@@ -246,6 +247,12 @@ inoremap <PageDown> <NOP>
 
 "==================== quick fix =============={{{2 
 
+" Jump to next error with Ctrl-n and previous error with Ctrl-m. Close the
+" quickfix window with <leader>a
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+
 nnoremap <leader>q :call QuickfixToggle()<cr>
 
 let g:quickfix_is_open = 0
@@ -287,7 +294,7 @@ map <C-l> <C-W>l
 " save session
 :nnoremap <leader>s :mksession<CR>
 "========== vimrc ==============={{{2
-nnoremap <leader>ev :split $MYVIMRC<cr>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
 nnoremap <leader>sv :so $MYVIMRC<cr>
 "=========== iabbreev=================='{{{1
@@ -298,6 +305,7 @@ nnoremap <leader>sv :so $MYVIMRC<cr>
 "===============Auto commands=================={{{1
 :autocmd BufWritePre,BufRead *.html :normal gg=G
 :autocmd BufNewFile,BufRead *.html setlocal nowrap
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 " defaulttt indenter for xml files
 
 "Generates line numbers to print

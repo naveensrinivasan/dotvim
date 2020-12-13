@@ -90,6 +90,7 @@ zplug romkatv/powerlevel10k, as:theme, depth:
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
+zplug "Aloxaf/fzf-tab"
 
 
 ###########################################################
@@ -152,6 +153,8 @@ alias vim="nvim"
 alias k="kubectl"
 alias kns="kubens"
 
+bindkey
+
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -166,4 +169,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="/usr/local/sbin:$PATH"
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
 

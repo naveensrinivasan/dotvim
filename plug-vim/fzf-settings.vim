@@ -8,6 +8,5 @@ command! -bang -nargs=*  All
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
 nnoremap \ :Rg<CR>
 nnoremap <C-p> :FZF<cr>
+nnoremap <C-r> :Rg<cr>
 nnoremap <Leader>b :Buffers<cr>
-nnoremap <Leader>s :BLines<cr>
-nnoremap <Leader>f :All<cr>

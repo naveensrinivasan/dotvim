@@ -78,6 +78,7 @@ ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
+eval "$(starship init zsh)"
 
 source $ZSH/oh-my-zsh.sh
 

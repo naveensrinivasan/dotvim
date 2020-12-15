@@ -13,7 +13,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
-Plug 'ap/vim-buftabline'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -226,10 +225,6 @@ set guioptions-=r  "remove right-hand scroll bar
 
 "================= Key bindings ============={{{1
 let mapleader=","
-"Quickly switching buffers in Vim normal mode
-map gn :bn<cr>
-map gp :bp<cr>
-map gd :bd<cr>
 " Arrow keys movement{{{2
 nnoremap <Up> <NOP>
 nnoremap <Down> <NOP>

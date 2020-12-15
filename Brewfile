@@ -6,7 +6,6 @@ tap "github/gh"
 tap "tilt-dev/tap"
 cask "microsoft-teams"
 cask "virtualbox"
-cask "vagrant"
 cask "signal"
 cask "firefox"
 cask "postman"
@@ -63,6 +62,7 @@ brew "fd"
 brew "ripgrep"
 brew "the_silver_searcher"
 brew "bat"
+brew "starship"
 mas "Enpass", id: 732710998
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434

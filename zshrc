@@ -173,4 +173,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export PATH="/usr/local/sbin:$PATH"
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
-
+OPENAI_API_KEY=$(security find-generic-password -a "$USER" -s "openai" -w)

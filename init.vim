@@ -12,7 +12,9 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-rooter'
+Plug 'jessfraz/openai.vim'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -307,6 +309,10 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 " Spell-check Markdown files and Git Commit Messages
 autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
+
+" Enable dictionary auto-completion in Markdown files and Git Commit Messages
+autocmd FileType markdown setlocal complete+=kspell
+autocmd FileType gitcommit setlocal complete+=kspell
 
 "Generates line numbers to print
 function! GenerateLineNumbers()

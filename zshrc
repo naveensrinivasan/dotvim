@@ -138,6 +138,8 @@ alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias cfs='cf submit'
 alias bs='brew search'
 alias bb='brew bundle'
+alias tl='tmux list-sessions'
+alias kf='tmux -CC a -t kf'
 #To use LibreSSL and curl installed by Homebrew, it is important to update your path.
 #You can add the following to your shell profile.
 #Currently we're using zsh where the file you need to alter is ~/.zshrc

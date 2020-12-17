@@ -303,6 +303,11 @@ nnoremap <leader>sv :so $MYVIMRC<cr>
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 " defaulttt indenter for xml files
 
+
+" Spell-check Markdown files and Git Commit Messages
+autocmd FileType markdown setlocal spell
+autocmd FileType gitcommit setlocal spell
+
 "Generates line numbers to print
 function! GenerateLineNumbers()
  %s/^/\=printf('%-4d', line('.'))

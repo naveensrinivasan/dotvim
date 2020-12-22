@@ -15,6 +15,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-rooter'
 Plug 'buoto/gotests-vim'
+Plug 'neomake/neomake'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -25,6 +26,7 @@ call plug#end()
 colorscheme badwolf
 source $HOME/.vim/plug-vim/fzf-settings.vim
 source $HOME/.vim/plug-vim/go-settings.vim
+source $HOME/.vim/plug-vim/neomake.vim
 
 
 

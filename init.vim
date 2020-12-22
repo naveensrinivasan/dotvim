@@ -14,7 +14,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-rooter'
-Plug 'jessfraz/openai.vim'
+Plug 'buoto/gotests-vim'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'

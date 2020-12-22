@@ -63,6 +63,12 @@ brew "ripgrep"
 brew "the_silver_searcher"
 brew "bat"
 brew "starship"
+brew "gnupg"
+brew "yubikey-personalization"
+brew "hopenpgp-tools"
+brew "ykman"
+brew "pinentry-mac"
+brew "shellcheck"
 mas "Enpass", id: 732710998
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434

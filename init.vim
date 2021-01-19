@@ -16,6 +16,7 @@ Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-rooter'
 Plug 'buoto/gotests-vim'
 Plug 'neomake/neomake'
+Plug 'easymotion/vim-easymotion'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'

@@ -78,7 +78,7 @@ ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-eval "$(starship init zsh)"
+#source <("/usr/local/bin/starship" init zsh --print-full-init)%
 
 source $ZSH/oh-my-zsh.sh
 
@@ -175,4 +175,3 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 OPENAI_API_KEY=$(security find-generic-password -a "$USER" -s "openai" -w)
 export GPG_TTY=$(tty)
-export LIBRARY_PATH=/usr/local/Cellar/gsl/2.6/lib

@@ -10,6 +10,7 @@ Create symlinks:
     ln -s ~/.vim/gvimrc ~/.gvimrc
     ln -s ~/.vim ~/.config/nvim
     ln -s ~/.vimrc ~/.config/nvim/init.vim
+    ln -s ~/.vim/rigreprc ~/.rigreprc
 
 Switch to the `~/.vim` directory, and fetch submodules:
 

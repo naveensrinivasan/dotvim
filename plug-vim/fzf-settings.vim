@@ -2,11 +2,16 @@
 " If installed using git
 set rtp+=~/.fzf
 command! -bang -nargs=*  All
-  \ call fzf#run(fzf#wrap({'source': 'rg --files --hidden --no-ignore-vcs --glob "!{node_modules/*,.git/*}"', 'down': '40%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi --reverse' }))
+  \ call fzf#run(fzf#wrap({'source': 'rg --files --hidden --no-ignore-vcs --glob "!{node_modules/*,.git/*,vendor/*}"', 'down': '40%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi --reverse' }))
 
+command! -bang -nargs=*  Foo1
+ \  call fzf#vim#grep("rg --column --line-number --no-heading --color=always --glob '!{node_modules/*,.git/*,vendor/*}' --smart-case -- ".shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=*  Foo
+ \  call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
 
 set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
-nnoremap \ :Rg<CR>
+nnoremap \ :Foo<CR>
 nnoremap <C-p> :FZF<cr>
-nnoremap <C-r> :Rg<cr>
+nnoremap <C-r> :Foo<cr>
+nnoremap <C-o> :History<cr>
 nnoremap <C-b> :Buffers<cr>

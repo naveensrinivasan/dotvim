@@ -164,7 +164,6 @@ bindkey
 ##setupdocker()
 
 
-export JAVA_HOME=$(/usr/libexec/java_home -v 11.0.8)
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -175,3 +174,5 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 OPENAI_API_KEY=$(security find-generic-password -a "$USER" -s "openai" -w)
 export GPG_TTY=$(tty)
+
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude vendor'

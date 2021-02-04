@@ -176,3 +176,9 @@ OPENAI_API_KEY=$(security find-generic-password -a "$USER" -s "openai" -w)
 export GPG_TTY=$(tty)
 
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude vendor'
+
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
+source <(ko completion --zsh)
+export KO_DOCKER_REPO=registry.digitalocean.com/turris/

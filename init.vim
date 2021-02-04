@@ -18,6 +18,8 @@ Plug 'buoto/gotests-vim'
 Plug 'neomake/neomake'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
+" Vim HardTime
+Plug 'takac/vim-hardtime'
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -29,8 +31,6 @@ colorscheme badwolf
 source $HOME/.vim/plug-vim/fzf-settings.vim
 source $HOME/.vim/plug-vim/go-settings.vim
 source $HOME/.vim/plug-vim/neomake.vim
-
-
 
 
 filetype plugin indent on

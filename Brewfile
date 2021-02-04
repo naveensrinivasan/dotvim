@@ -12,6 +12,7 @@ cask "font-mononoki"
 cask "font-hack-nerd-font"
 cask "little-snitch"
 cask "signal"
+cask "google-cloud-sdk"
 brew "curl"
 brew "go"
 brew "httpie"
@@ -61,6 +62,8 @@ brew "ykman"
 brew "pinentry-mac"
 brew "shellcheck"
 brew "git-delta"
+brew "ko"
+brew "doctl"
 mas "Enpass", id: 732710998
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434

@@ -181,4 +181,4 @@ source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.in
 source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
 source <(ko completion --zsh)
-export KO_DOCKER_REPO=registry.digitalocean.com/turris/
+export KO_DOCKER_REPO=gcr.io/naveen-ossf-malware-analysis

@@ -88,3 +88,4 @@ export GOPATH=$HOME/Go
 export GOROOT=/usr/local/bin/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
+export GPG_TTY=$(tty)

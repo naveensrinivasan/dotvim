@@ -2,20 +2,23 @@
 with (import <nixpkgs> {});
 mkShell {
   buildInputs = [
-   curl
+	 curl
 	 go
 	 httpie
 	 jq
 	 neovim
+	 kubectl
 	 gh
+	 oh-my-zsh
 	 coreutils
 	 wget
-     fzf
-     ripgrep
+	 fzf
+	 ripgrep
+	 powerline-fonts
 	 kubectx
 	 watch
 	 docker
-     nodejs
+	  nodejs
 	 docker-machine
 	 tree
 	 graphviz
@@ -26,9 +29,12 @@ mkShell {
 	 golangci-lint
 	 fd
 	 ripgrep
+     delta
+	redis
 	 bat
 	 starship
 	 shellcheck
-     google-cloud-sdk
+	 google-cloud-sdk
+     zplug
   ];
 }

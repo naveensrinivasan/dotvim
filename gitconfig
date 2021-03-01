@@ -1,7 +1,7 @@
 [user]
 	name = naveen
 	email = 172697+naveensrinivasan@users.noreply.github.com
-	signingkey = 6C3728F96FAF80C1C0B291247FF1C09C0E9CF125
+	signingkey = 820E31040E451907
 [hub]
 	protocol = ssh
 

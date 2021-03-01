@@ -5,11 +5,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+export ZSH="/home/turris/.oh-my-zsh"
+
+
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-export ZSH="/Users/naveen/.oh-my-zsh"
 
 ZSH_DISABLE_COMPFIX=true 
 
@@ -83,31 +84,6 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 
-export ZPLUG_HOME=$(brew --prefix)/opt/zplug
-source $ZPLUG_HOME/init.zsh
-
-zplug romkatv/powerlevel10k, as:theme, depth:
-
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-zplug "Aloxaf/fzf-tab"
-
-
-###########################################################
-# Install packages that have not been installed yet
-if ! zplug check ; then
-         zplug install
-fi
-
-zplug load
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
@@ -136,8 +112,6 @@ fi
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias cfs='cf submit'
-alias bs='brew search'
-alias bb='brew bundle'
 alias tl='tmux list-sessions'
 alias kf='tmux -CC a -t kf'
 #To use LibreSSL and curl installed by Homebrew, it is important to update your path.
@@ -161,9 +135,6 @@ bindkey
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-##setupdocker()
-
-
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -172,13 +143,14 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export PATH="/usr/local/sbin:$PATH"
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
-OPENAI_API_KEY=$(security find-generic-password -a "$USER" -s "openai" -w)
 export GPG_TTY=$(tty)
 
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude vendor'
 
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+if [ -n "${commands[fzf-share]}" ]; then
+  source "$(fzf-share)/key-bindings.zsh"
+  source "$(fzf-share)/completion.zsh"
+fi
 
-source <(ko completion --zsh)
-export KO_DOCKER_REPO=gcr.io/naveen-ossf-malware-analysis
+eval "$(starship init zsh)"
+export GPG_TTY=$(tty)

@@ -151,3 +151,6 @@ if [ -n "${commands[fzf-share]}" ]; then
 fi
 
 export GPG_TTY=$(tty)
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+

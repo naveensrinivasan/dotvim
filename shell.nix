@@ -18,7 +18,7 @@ mkShell {
 	 kubectx
 	 watch
 	 docker
-	  nodejs
+	 nodejs
 	 docker-machine
 	 tree
 	 graphviz
@@ -30,7 +30,6 @@ mkShell {
 	 fd
 	 ripgrep
      delta
-	redis
 	 bat
 	 starship
 	 shellcheck

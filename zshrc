@@ -8,7 +8,6 @@ fi
 export ZSH="/home/turris/.oh-my-zsh"
 
 
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -111,7 +110,6 @@ fi
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias cfs='cf submit'
 alias tl='tmux list-sessions'
 alias kf='tmux -CC a -t kf'
 #To use LibreSSL and curl installed by Homebrew, it is important to update your path.
@@ -152,5 +150,4 @@ if [ -n "${commands[fzf-share]}" ]; then
   source "$(fzf-share)/completion.zsh"
 fi
 
-eval "$(starship init zsh)"
 export GPG_TTY=$(tty)

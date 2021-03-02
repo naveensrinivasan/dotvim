@@ -31,7 +31,6 @@ mkShell {
 	 ripgrep
      delta
 	 bat
-	 starship
 	 shellcheck
 	 google-cloud-sdk
      zplug

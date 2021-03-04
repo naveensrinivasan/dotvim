@@ -36,14 +36,6 @@ source $HOME/.vim/plug-vim/neomake.vim
 filetype plugin indent on
 " =============== Pathogen Initialization ==============={{{1
 syntax on
-"=============== Window setttings==============================={{{1
-" Maximize the window
-if has("gui_running")
-   let s:uname = system("uname")
-   if s:uname == "Darwin\n"
-      set guifont=Meslo\ LG\ S\ for\ Powerline
-   endif
-endif
 
 " -------------------------------------------------------------------------------------------------
 " coc.nvim default settings
@@ -138,6 +130,7 @@ set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set clipboard=unnamed           "like the OS clipboard as default
 set clipboard+=unnamedplus           "like the OS clipboard as default
+
 
 set autochdir                   "Change dir automatically
 set cursorline
@@ -323,4 +316,3 @@ function! GenerateLineNumbers()
  %s/^/\=printf('%-4d', line('.'))
 endfunction
 
-set autochdir

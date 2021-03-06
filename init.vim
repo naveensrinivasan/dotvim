@@ -223,7 +223,7 @@ set guioptions-=r  "remove right-hand scroll bar
 
 
 "================= Key bindings ============={{{1
-let mapleader=","
+let mapeader=","
 " Arrow keys movement{{{2
 nnoremap <Up> <NOP>
 nnoremap <Down> <NOP>
@@ -247,7 +247,7 @@ map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 
-nnoremap <leader>q :call QuickfixToggle()<cr>
+noremap <leader>q :call QuickfixToggle()<cr>
 
 let g:quickfix_is_open = 0
 

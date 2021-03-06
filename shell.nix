@@ -2,8 +2,9 @@
 with (import <nixpkgs> {});
 mkShell {
   buildInputs = [
-	zsh
+	 zsh
 	 curl
+         httpie
 	 go
 	 httpie
 	 jq
@@ -30,7 +31,7 @@ mkShell {
 	 golangci-lint
 	 fd
 	 ripgrep
-     delta
+	 delta
 	 bat
 	 shellcheck
 	 google-cloud-sdk

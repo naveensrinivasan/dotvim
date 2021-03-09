@@ -78,7 +78,6 @@ ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-#source <("/usr/local/bin/starship" init zsh --print-full-init)%
 
 source $ZSH/oh-my-zsh.sh
 
@@ -112,13 +111,6 @@ alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias tl='tmux list-sessions'
 alias kf='tmux -CC a -t kf'
-#To use LibreSSL and curl installed by Homebrew, it is important to update your path.
-#You can add the following to your shell profile.
-#Currently we're using zsh where the file you need to alter is ~/.zshrc
-PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/curl/bin:$PATH"
-export PATH="/usr/local/opt/libressl/bin:$PATH"
-export PATH="/Users/naveen/go/bin:$PATH"
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin
 
@@ -127,6 +119,7 @@ alias vim="nvim"
 #k8s alias
 alias k="kubectl"
 alias kns="kubens"
+alias kctx="kubectx"
 
 bindkey
 

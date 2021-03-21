@@ -6,6 +6,7 @@ mkShell {
 	 curl
          httpie
 	 go
+         glow
 	 httpie
 	 jq
 	 neovim

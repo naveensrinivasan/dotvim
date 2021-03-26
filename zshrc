@@ -7,7 +7,6 @@ fi
 
 export ZSH="/home/sammy/.oh-my-zsh"
 
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -81,8 +80,6 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-
-
 # Preferred editor for local and remote sessions
  if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='nvim'
@@ -125,7 +122,6 @@ bindkey
 
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

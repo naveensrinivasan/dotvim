@@ -4,9 +4,9 @@ mkShell {
   buildInputs = [
 	 zsh
 	 curl
-         httpie
+     httpie
 	 go
-         glow
+     glow
 	 httpie
 	 jq
 	 neovim

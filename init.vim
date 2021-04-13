@@ -17,8 +17,6 @@ Plug 'airblade/vim-rooter'
 Plug 'buoto/gotests-vim'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
-" Vim HardTime
-Plug 'takac/vim-hardtime'
 Plug 'mzlogin/vim-markdown-toc'
 
 

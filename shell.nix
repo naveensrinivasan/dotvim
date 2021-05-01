@@ -7,6 +7,7 @@ mkShell {
      httpie
 	 go
      glow
+         python
 	 httpie
 	 jq
 	 neovim

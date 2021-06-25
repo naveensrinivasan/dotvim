@@ -18,6 +18,7 @@ Plug 'buoto/gotests-vim'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'mzlogin/vim-markdown-toc'
+Plug 'jiangmiao/auto-pairs'
 
 
 " Track the engine.

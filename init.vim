@@ -231,7 +231,7 @@ nnoremap <Left> <NOP>
 nnoremap <Right> <NOP>
 nnoremap <PageUp> <NOP>
 nnoremap <PageDown> <NOP>
-nnoremap 0 <NOP>
+nnoremap ^ <NOP>
 nnoremap $ <NOP>
 
 inoremap jk <esc>

@@ -146,3 +146,5 @@ ssh-add ~/.ssh/id_ed25519
 export KO_DOCKER_REPO=gcr.io/openssf
 source <(ko completion)
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export GOBIN=$GOPATH/bin
+

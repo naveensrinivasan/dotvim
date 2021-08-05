@@ -5,7 +5,7 @@ mkShell {
 	 zsh
 	 curl
 	 go
-     glow
+         glow
 	 jq
 	 neovim
 	 kubectl
@@ -21,12 +21,13 @@ mkShell {
 	 docker-machine
 	 tree
 	 graphviz
-	 golangci-lint
 	 fd
 	 delta
 	 bat
 	 shellcheck
 	 google-cloud-sdk
-     zplug
+         zplug
+	yarn
+        nodejs
   ];
 }

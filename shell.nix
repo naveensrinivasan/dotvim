@@ -29,5 +29,6 @@ mkShell {
          zplug
 	yarn
         nodejs
+	podman
   ];
 }

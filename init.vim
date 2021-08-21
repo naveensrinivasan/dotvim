@@ -14,6 +14,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-rooter'
+Plug 'godoctor/godoctor.vim'
 Plug 'buoto/gotests-vim'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-fugitive'

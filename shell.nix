@@ -5,7 +5,7 @@ mkShell {
 	 zsh
 	 curl
 	 go
-         glow
+     glow
 	 jq
 	 neovim
 	 kubectl
@@ -26,9 +26,13 @@ mkShell {
 	 bat
 	 shellcheck
 	 google-cloud-sdk
-         zplug
-	yarn
-        nodejs
-	podman
+         vault-bin
+         awscli
+         openssl
+     zplug
+	 yarn
+     nodejs
+	 podman
+     doctl
   ];
 }

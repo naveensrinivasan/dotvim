@@ -106,12 +106,9 @@ fi
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias tl='tmux list-sessions'
-alias kf='tmux -CC a -t kf'
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin
 
-alias python='/usr/local/bin/python3' 
 alias vim="nvim"
 #k8s alias
 alias k="kubectl"
@@ -143,8 +140,6 @@ export GPG_TTY=$(tty)
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 
-export KO_DOCKER_REPO=gcr.io/openssf
 source <(ko completion)
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export GOBIN=$GOPATH/bin
-

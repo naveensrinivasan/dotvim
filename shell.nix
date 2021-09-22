@@ -25,13 +25,12 @@ mkShell {
 	 bat
 	 shellcheck
 	 google-cloud-sdk
-         vault-bin
-         awscli
-         openssl
+     openssl
      zplug
 	 yarn
      nodejs
 	 podman
      doctl
+     hugo
   ];
 }

@@ -140,6 +140,7 @@ export GPG_TTY=$(tty)
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 
-source <(ko completion)
+source <(ko completion --zsh)
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export GOBIN=$GOPATH/bin
+export KO_DOCKER_REPO=gcr.io/openssf

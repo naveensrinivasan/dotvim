@@ -4,17 +4,15 @@ mkShell {
   buildInputs = [
 	 zsh
 	 curl
-     glow
+	 glow
 	 jq
 	 neovim
-	 kubectl
 	 gh
 	 oh-my-zsh
 	 coreutils
 	 fzf
 	 ripgrep
 	 powerline-fonts
-	 kubectx
 	 docker
 	 nodejs
 	 docker-machine
@@ -24,14 +22,13 @@ mkShell {
 	 delta
 	 bat
 	 shellcheck
-	 google-cloud-sdk
-         vault-bin
-         awscli
-         openssl
-     zplug
+     openssl
+	 zplug
 	 yarn
-     nodejs
+	 nodejs
 	 podman
-     doctl
+	 doctl
+    go_1_15
+	ag
   ];
 }

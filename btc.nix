@@ -30,5 +30,6 @@ mkShell {
 	 doctl
          go
 	ag
+       whois
   ];
 }

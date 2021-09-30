@@ -1,5 +1,0 @@
-code --install-extension asvetliakov.vscode-neovim
-code --install-extension GitHub.vscode-pull-request-github
-code --install-extension golang.go
-code --install-extension hediet.debug-visualizer
-code --install-extension LeetCode.vscode-leetcode

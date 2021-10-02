@@ -28,7 +28,7 @@ mkShell {
 	 nodejs
 	 podman
 	 doctl
-    go_1_15
+    go
 	ag
   ];
 }

@@ -4,7 +4,7 @@ mkShell {
   buildInputs = [
 	 zsh
 	 curl
-         glow
+     glow
 	 jq
  	 neovim
 	 kubectl
@@ -25,13 +25,14 @@ mkShell {
 	 bat
 	 shellcheck
 	 google-cloud-sdk
-         openssl
-         zplug
-	 yarn
-         nodejs
-	 podman
-         doctl
-         hugo
-         whois
+     openssl
+     zplug
+     yarn
+     nodejs
+     podman
+     doctl
+     hugo
+     whois
+     go_1_17
   ];
 }

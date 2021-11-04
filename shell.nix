@@ -33,6 +33,6 @@ mkShell {
      doctl
      hugo
      whois
-     go
+     go_1_17
   ];
 }

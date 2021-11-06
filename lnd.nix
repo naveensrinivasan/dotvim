@@ -31,5 +31,6 @@ mkShell {
     go
 	ag
         hadolint
+	pkgconfig
   ];
 }

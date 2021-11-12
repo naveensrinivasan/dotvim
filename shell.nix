@@ -34,5 +34,6 @@ mkShell {
      hugo
      whois
      go_1_17
+     protoc-gen-go
   ];
 }

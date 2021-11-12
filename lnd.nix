@@ -32,5 +32,9 @@ mkShell {
 	ag
         hadolint
 	pkgconfig
+	yubikey-agent
+
+	 kubectl
+	 kubectx
   ];
 }

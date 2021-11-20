@@ -36,5 +36,6 @@ mkShell {
 
 	 kubectl
 	 kubectx
+         python
   ];
 }

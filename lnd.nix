@@ -33,7 +33,7 @@ mkShell {
         hadolint
 	pkgconfig
 	yubikey-agent
-
+	httpie
 	 kubectl
 	 kubectx
          python

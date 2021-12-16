@@ -37,5 +37,6 @@ mkShell {
      protoc-gen-go
      python
      clang
+     kind
   ];
 }

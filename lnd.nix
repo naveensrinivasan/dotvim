@@ -27,16 +27,19 @@ mkShell {
 	 yarn
 	 nodejs
 	 podman
-	 doctl
+     doctl
     go
-	ag
-        hadolint
+    ag
+    hadolint
 	pkgconfig
 	yubikey-agent
 	httpie
-	 kubectl
-	 kubectx
-         python
-         clang
+    kubectl
+    kubectx
+    python
+    clang
+    rustc
+    cargo
+
   ];
 }

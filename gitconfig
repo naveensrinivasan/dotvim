@@ -20,4 +20,4 @@
     file-style = bold yellow ul
     file-decoration-style = none
 [commit]
-	gpgSign = true
+	gpgsign = false

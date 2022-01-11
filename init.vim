@@ -279,10 +279,10 @@ nnoremap <leader>' Wa'<esc>bi'<esc>
 "fold
 nnoremap <Space> za
 "======= Split movement ================{{{2
-"map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+map <C-j> <C-W>j
+map <C-K> <C-W>k
+map <C-H> <C-W>h
+map <C-L> <C-W>l
 "========= Save ======{{{2
 :noremap <c-s> :w<CR>
 :inoremap <c-s> <Esc>:w<CR>

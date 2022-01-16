@@ -38,5 +38,6 @@ mkShell {
      python
      clang
      kind
+     automake
   ];
 }

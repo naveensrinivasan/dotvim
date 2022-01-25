@@ -142,6 +142,7 @@ ssh-add ~/.ssh/id_ed25519
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH=$PATH:/home/sammy/.cargo/bin
+export PATH=$PATH:/home/sammy/.local/bin
 export GOBIN=$GOPATH/bin
 export KO_DOCKER_REPO=gcr.io/openssf
 export LANGUAGE=en_US.UTF-8

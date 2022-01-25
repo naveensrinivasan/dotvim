@@ -41,5 +41,7 @@ mkShell {
      automake
      rustc
      rustfmt
+     exercism
+     cargo
   ];
 }

@@ -21,6 +21,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'jiangmiao/auto-pairs'
 Plug 'naveensrinivasan/copilot'
+Plug 'rust-lang/rust.vim'
 
 
 " Track the engine.

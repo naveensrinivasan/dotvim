@@ -129,7 +129,7 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 export GPG_TTY=$(tty)
 
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude vendor'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude vendor --exclude .git'
 
 if [ -n "${commands[fzf-share]}" ]; then
   source "$(fzf-share)/key-bindings.zsh"

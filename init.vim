@@ -8,10 +8,11 @@ endif
 call plug#begin()
 Plug 'fatih/vim-go'
 Plug 'sjl/badwolf'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'tpope/vim-fugitive'
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'github/copilot.vim'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-rooter'
 Plug 'godoctor/godoctor.vim'
@@ -21,11 +22,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'jiangmiao/auto-pairs'
 Plug 'rust-lang/rust.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'pedrohdz/vim-yaml-folds'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
 
+let mapleader = ","
 
 " Track the engine.
 Plug 'SirVer/ultisnips'
@@ -255,6 +259,11 @@ nnoremap <leader>a :cclose<CR>
 
 noremap <leader>q :call QuickfixToggle()<cr>
 
+augroup quickfix
+    autocmd!
+    autocmd FileType qf setlocal wrap
+augroup END
+
 let g:quickfix_is_open = 0
 
 function! QuickfixToggle()
@@ -313,9 +322,17 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 autocmd FileType markdown setlocal spell
 autocmd FileType gitcommit setlocal spell
 
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+set foldlevelstart=20
+
+
 " Enable dictionary auto-completion in Markdown files and Git Commit Messages
 autocmd FileType markdown setlocal complete+=kspell
 autocmd FileType gitcommit setlocal complete+=kspell
+
+" :GoTest
+:nnoremap <leader>t  <Esc>:GoTest<cr>
 
 "Generates line numbers to print
 function! GenerateLineNumbers()

@@ -1,9 +1,12 @@
 [user]
-	name = naveen
+	name = naveensrinivasan
 	email = 172697+naveensrinivasan@users.noreply.github.com
-	signingkey = 77FCE42B01284B92
+	signingkey = F39F847B7B035ADE
 [hub]
 	protocol = ssh
+
+[commit]
+	gpgsign = true
 
 [core]
     pager = delta
@@ -12,12 +15,13 @@
     diffFilter = delta --color-only
 
 [delta]
-    features = side-by-side line-numbers decorations
-    whitespace-error-style = 22 reverse
+    navigate = true  # use n and N to move between diff sections
+    light = false    # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    side-by-side = true
 
-[delta "decorations"]
-    commit-decoration-style = bold yellow box ul
-    file-style = bold yellow ul
-    file-decoration-style = none
-[commit]
-	gpgsign = false
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+

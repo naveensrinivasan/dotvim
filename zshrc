@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export ZSH="/home/sammy/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -129,7 +129,7 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 export GPG_TTY=$(tty)
 
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude vendor --exclude .git'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude vendor'
 
 if [ -n "${commands[fzf-share]}" ]; then
   source "$(fzf-share)/key-bindings.zsh"
@@ -149,3 +149,14 @@ export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
+
+eval "$(direnv hook zsh)"
+export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
+export DOCKER_HOST='unix:///Users/naveensrinivasan/.local/share/containers/podman/machine/podman-machine-default/podman.sock'
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+export PATH="/Users/naveensrinivasan/go/src/github.com/ossf/scorecard":$PATH
+export XYZ="iLQqFfJff2nRx5ks"
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+PS1='$(kube_ps1)'$PS1
+USE_GKE_GCLOUD_AUTH_PLUGIN=True

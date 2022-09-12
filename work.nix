@@ -19,7 +19,6 @@ mkShell {
 	 nodejs
 	 docker-machine
 	 tree
-	 graphviz
 	 fd
 	 delta
 	 bat
@@ -31,12 +30,17 @@ mkShell {
      nodejs
      podman
      doctl
-     hugo
      whois
-     go_1_17
-     protoc-gen-go
+     go_1_18
      python
      clang
      kind
+     git-crypt
+     gnupg
+     kubernetes-helm
+     direnv
+     wget
+     jdk17
+     python3
   ];
 }

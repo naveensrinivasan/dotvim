@@ -39,5 +39,10 @@ mkShell {
      clang
      kind
      automake
+     direnv
+     gnupg
+     protobuf
+     nodejs
+     git-crypt
   ];
 }

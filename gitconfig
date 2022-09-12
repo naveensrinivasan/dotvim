@@ -10,6 +10,7 @@
 
 [core]
     pager = delta
+	excludesfile = /Users/naveen/.vim/.gitignore
 
 [interactive]
     diffFilter = delta --color-only

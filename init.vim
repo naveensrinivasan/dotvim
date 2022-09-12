@@ -24,10 +24,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'rust-lang/rust.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'pedrohdz/vim-yaml-folds'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
 
 let mapleader = ","
 
@@ -339,3 +335,5 @@ function! GenerateLineNumbers()
  %s/^/\=printf('%-4d', line('.'))
 endfunction
 
+let g:LanguageClient_loggingLevel = 'DEBUG'
+let g:LanguageClient_loggingFile = "/tmp/LanguageClient.log"

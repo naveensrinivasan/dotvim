@@ -11,5 +11,5 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --follow
 nnoremap \ :Foo<CR>
 nnoremap <C-p> :FZF<cr>
 nnoremap <C-r> :Foo<cr>
-nnoremap <C-i> :History<cr>
+nnoremap <tab> :History<cr>
 nnoremap <C-b> :Buffers<cr>

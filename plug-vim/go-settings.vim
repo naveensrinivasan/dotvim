@@ -15,6 +15,8 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
 let g:go_fmt_command="gopls"
 let g:go_gopls_gofumpt=1
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 
 augroup go

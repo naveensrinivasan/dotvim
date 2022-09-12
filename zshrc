@@ -76,7 +76,7 @@ ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ssh-agent)
+plugins=(git ssh-agent fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -118,7 +118,6 @@ alias kctx="kubectx"
 bindkey
 
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -141,22 +140,28 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export PATH=$PATH:/home/sammy/.cargo/bin
-export PATH=$PATH:/home/sammy/.local/bin
 export GOBIN=$GOPATH/bin
 export KO_DOCKER_REPO=gcr.io/openssf
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
-
-eval "$(direnv hook zsh)"
-export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
-export DOCKER_HOST='unix:///Users/naveensrinivasan/.local/share/containers/podman/machine/podman-machine-default/podman.sock'
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-export PATH="/Users/naveensrinivasan/go/src/github.com/ossf/scorecard":$PATH
-export XYZ="iLQqFfJff2nRx5ks"
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+source "/opt/homebrew/opt/kube-ps1/share/kube-ps1.sh"
 PS1='$(kube_ps1)'$PS1
 USE_GKE_GCLOUD_AUTH_PLUGIN=True
+eval $(/opt/homebrew/bin/brew shellenv)
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+eval "$(direnv hook zsh)"
+source <(kubectl completion zsh)
+# Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
+source $ZPLUG_HOME/init.zsh
+zplug 'wfxr/forgit'
+export prom=BEPHWSbVazKLakCu
+export p=6xAVIPlDP1WETGGl

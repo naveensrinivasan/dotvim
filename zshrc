@@ -148,12 +148,10 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 source "/opt/homebrew/opt/kube-ps1/share/kube-ps1.sh"
 PS1='$(kube_ps1)'$PS1
-USE_GKE_GCLOUD_AUTH_PLUGIN=True
 eval $(/opt/homebrew/bin/brew shellenv)
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
-source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 eval "$(direnv hook zsh)"
 source <(kubectl completion zsh)
 # Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)
@@ -165,3 +163,8 @@ source $ZPLUG_HOME/init.zsh
 zplug 'wfxr/forgit'
 export prom=BEPHWSbVazKLakCu
 export p=6xAVIPlDP1WETGGl
+ulimit -n 12288
+#alias go="/Users/naveen/go/go1.18.4/bin/go"
+alias docker="podman"
+alias docker-compose="/opt/homebrew/bin/podman-compose"
+export GOWORK=off

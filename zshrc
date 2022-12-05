@@ -168,3 +168,4 @@ ulimit -n 12288
 alias docker="podman"
 alias docker-compose="/opt/homebrew/bin/podman-compose"
 export GOWORK=off
+ [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh

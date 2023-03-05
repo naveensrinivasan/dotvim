@@ -99,7 +99,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/sbin:$PATH:/usr/local/go/bin"
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 export GPG_TTY=$(tty)
@@ -133,15 +133,11 @@ source <(kubectl completion zsh)
 # Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
+export PATH="/opt/homebrew/opt/node@16/bin:$PATH:/usr/local/go/bin"
 export ZPLUG_HOME=/opt/homebrew/opt/zplug
 source $ZPLUG_HOME/init.zsh
 zplug 'wfxr/forgit'
-export prom=BEPHWSbVazKLakCu
-export p=6xAVIPlDP1WETGGl
 ulimit -n 12288
 #alias go="/Users/naveen/go/go1.18.4/bin/go"
-alias docker="podman"
-alias docker-compose="/opt/homebrew/bin/podman-compose"
 export GOWORK=off
  [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh

@@ -111,6 +111,81 @@ if [ -n "${commands[fzf-share]}" ]; then
   source "$(fzf-share)/completion.zsh"
 fi
 
+function git_filtered_branches_last_week() {
+  # Table 1: Date and Branch Name
+  echo "Table 1: Date and Branch Name"
+  git for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:relative)|%(refname:short)' | \
+  awk -F'|' 'BEGIN {print "Date|Branch Name"} $2 != "main" && $2 ~ /^naveen/ && $1 !~ /(weeks|months|years) ago/ {print $1 "|" $2}' | \
+  column -t -s '|'
+  
+  # Table 2: Just Branch Names
+  echo "Table 2: Just Branch Names"
+  git for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:relative)|%(refname:short)' | \
+  awk -F'|' 'BEGIN {print "Branch Name"} $2 != "main" && $2 ~ /^naveen/ && $1 !~ /(weeks|months|years) ago/ {print $2}' | \
+  column -t
+}
+function process_go_files() {
+    # Change to the current directory (where the function is called from)
+    cd "$(dirname "$0")"
+
+    # Get the list of all changed files (including staged, unstaged, and untracked files)
+    # The output will include the relative path to the files
+    local changed_files=$(git status --porcelain | awk '{print $2}')
+
+    # Filter the list to include only .go files
+    local go_files=$(echo "$changed_files" | grep '\.go$')
+
+    # Loop through each .go file
+    for file in ${(f)go_files}; do
+        # Convert the relative path to a full path
+        local full_path=$(realpath "$file")
+
+        # Run the gci command with specified options
+        gci write -s "standard,default,prefix(github.com/ossf/scorecard)" "$full_path"
+
+        # Run the gofmt command to format the Go file
+        gofmt -w "$full_path"
+
+        gofumpt -w "$full_path"
+
+        # Run the goimports command to update imports in the Go file
+        goimports -w "$full_path"
+
+        git add "$full_path"
+
+        # Print the processed file's full path
+        echo "Processed: $full_path"
+    done
+    make check-linter
+}
+function update_last_commit() {
+  # Set the new commit date to today's date
+  export GIT_COMMITTER_DATE="$(date)"
+  
+  # Amend the last commit and include the sign-off
+  git commit --amend --no-edit --date "$GIT_COMMITTER_DATE" -s
+  
+  # Unset the GIT_COMMITTER_DATE variable
+  unset GIT_COMMITTER_DATE
+}
+function auto_review_dependencies_prs() {
+  # Approve all PRs with the "dependencies" label that have no review
+  gh pr list -S "is:pr is:open review:none label:dependencies sort:updated-desc" --json number | \
+  jq '.[].number' | \
+  xargs -L 1 gh pr review --approve
+
+  # Comment "@dependabot rebase" on all PRs with the "dependencies" label that have been approved
+  gh pr list -S "is:pr is:open review:approved label:dependencies" --json number | \
+  jq '.[].number' | \
+  xargs -L 1 gh pr comment -b "@dependabot rebase"
+
+  # Comment "@dependabot merge" on all PRs with the "dependencies" label that have been approved
+  gh pr list -S "is:pr is:open review:approved label:dependencies" --json number | \
+  jq '.[].number' | \
+  xargs -L 1 gh pr comment -b "@dependabot merge"
+}
+
+
 export GPG_TTY=$(tty)
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519

@@ -186,6 +186,31 @@ function auto_review_dependencies_prs() {
 }
 
 
+function auto_merge_prs() {
+  # Update the local main branch
+  git checkout main &&
+  git pull &&
+  
+  # List the first pending pull request
+  pr_number=$(gh pr list -S "is:pr is:open review:approved label:dependencies" --json number | \
+              jq '.[].number' | head -n 1)
+  
+  # Check if there is a pending pull request
+  if [ -n "$pr_number" ]; then
+    # Rebase and enable auto-merge for the first pull request
+    gh pr checkout "$pr_number" &&
+    git rebase main &&
+    git push --force-with-lease origin HEAD &&
+    gh pr merge "$pr_number" --squash --auto
+  else
+    echo "No pending pull requests found."
+  fi
+  
+  # Optionally, switch back to the main branch
+  git checkout main
+}
+
+
 export GPG_TTY=$(tty)
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519

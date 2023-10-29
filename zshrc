@@ -141,7 +141,7 @@ function process_go_files() {
         local full_path=$(realpath "$file")
 
         # Run the gci command with specified options
-        gci write -s "standard,default,prefix(github.com/ossf/scorecard)" "$full_path"
+        gci write -s "standard,default" "$full_path"
 
         # Run the gofmt command to format the Go file
         gofmt -w "$full_path"
@@ -156,7 +156,8 @@ function process_go_files() {
         # Print the processed file's full path
         echo "Processed: $full_path"
     done
-    make check-linter
+    make lint
+    make fmt
 }
 function update_last_commit() {
   # Set the new commit date to today's date
@@ -210,6 +211,12 @@ function auto_merge_prs() {
   git checkout main
 }
 
+function getupstream(){
+  git checkout main
+  git pull --rebase upstream main
+  git push origin main
+}
+
 
 export GPG_TTY=$(tty)
 eval "$(ssh-agent -s)"
@@ -241,3 +248,4 @@ ulimit -n 12288
 #alias go="/Users/naveen/go/go1.18.4/bin/go"
 export GOWORK=off
  [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+alias python=python3

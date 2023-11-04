@@ -1,7 +1,7 @@
 [user]
 	name = naveensrinivasan
 	email = 172697+naveensrinivasan@users.noreply.github.com
-	signingkey = F39F847B7B035ADE
+	signingkey = /Users/naveen/.ssh/id_ed25519.pub
 [hub]
 	protocol = ssh
 
@@ -26,3 +26,5 @@
 [diff]
     colorMoved = default
 
+[gpg]
+	format = ssh
